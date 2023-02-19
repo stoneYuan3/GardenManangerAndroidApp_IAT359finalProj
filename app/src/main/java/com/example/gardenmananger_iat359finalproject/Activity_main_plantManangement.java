@@ -18,6 +18,7 @@ public class Activity_main_plantManangement extends AppCompatActivity {
 
     Frag_plantManange fragPlantManange=new Frag_plantManange();
     Frag_records fragRecords=new Frag_records();
+    Frag_settings fragSettings=new Frag_settings();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +40,9 @@ public class Activity_main_plantManangement extends AppCompatActivity {
                         return true;
                     case R.id.button_nav_records:
                         getSupportFragmentManager().beginTransaction().replace(R.id.layout_main,fragRecords).commit();
+                        return true;
+                    case R.id.button_nav_settings:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.layout_main,fragSettings).commit();
                         return true;
                 }
                 return false;
