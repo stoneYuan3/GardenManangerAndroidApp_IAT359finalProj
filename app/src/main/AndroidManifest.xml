@@ -13,6 +13,13 @@
         android:theme="@style/Theme.GardenMananger_IAT359FinalProject"
         tools:targetApi="31">
         <activity
+            android:name=".Activity_lightSensor"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".Activity_main_plantManangement"
             android:exported="true">
             <intent-filter>

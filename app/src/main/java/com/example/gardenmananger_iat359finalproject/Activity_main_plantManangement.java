@@ -3,14 +3,17 @@ package com.example.gardenmananger_iat359finalproject;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
 //bottom navigation reference: https://www.youtube.com/watch?v=OV25x3a55pk
+//https://developer.android.com/guide/fragments
 
 public class Activity_main_plantManangement extends AppCompatActivity {
 
@@ -18,6 +21,7 @@ public class Activity_main_plantManangement extends AppCompatActivity {
 
     Frag_plantManange fragPlantManange=new Frag_plantManange();
     Frag_records fragRecords=new Frag_records();
+    Frag_tools fragTools=new Frag_tools();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,10 +44,19 @@ public class Activity_main_plantManangement extends AppCompatActivity {
                     case R.id.button_nav_records:
                         getSupportFragmentManager().beginTransaction().replace(R.id.layout_main,fragRecords).commit();
                         return true;
+                    case R.id.button_nav_tools:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.layout_main,fragTools).commit();
+                        return true;
                 }
                 return false;
             }
         });
+
+    }
+
+    public void startToolActivity(View v){
+        Intent intent=new Intent(this,Activity_lightSensor.class);
+        startActivity(intent);
     }
 
     public void gotoRecord(){

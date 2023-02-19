@@ -12,21 +12,22 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 
-public class Frag_plantManange extends Fragment implements View.OnClickListener {
+public class Frag_tools extends Fragment {
 
-
+    TextView tool_lightsense;
+    Context context;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+        tool_lightsense=container.findViewById(R.id.text_tool_lightsen);
+        context=container.getContext();
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_frag_plant_manange, container, false);
+        return inflater.inflate(R.layout.fragment_frag_tools, container, false);
     }
 
 
-    @Override
-    public void onClick(View v) {
 
-    }
 }
