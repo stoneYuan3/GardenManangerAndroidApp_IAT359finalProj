@@ -11,16 +11,22 @@ import android.hardware.SensorManager;
 import android.media.ToneGenerator;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.TextView;
 
 public class Activity_lightSensor extends AppCompatActivity implements SensorEventListener {
 
     private SensorManager sensorMaster;
     private Sensor sensor_light;
+    private TextView text_lightsenData,text_lightClass;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_light_sensor);
+
+        text_lightsenData=findViewById(R.id.text_lightsenData);
+        text_lightClass=findViewById(R.id.text_lightClass);
 
         sensorMaster=(SensorManager) getSystemService(SENSOR_SERVICE);
         if(sensorMaster.getDefaultSensor(TYPE_LIGHT)!=null){
@@ -43,6 +49,23 @@ public class Activity_lightSensor extends AppCompatActivity implements SensorEve
     public void onSensorChanged(SensorEvent event) {
         if(event.sensor.getType()==TYPE_LIGHT){
             float[] lightValAll = event.values;
+            for(int i=0;i<lightValAll.length;i++){
+                float valEach=lightValAll[i];
+                text_lightsenData.setText(valEach+" luminance");
+
+                if(valEach<5000){
+                    text_lightClass.setText("full shade");
+                }
+                else if(valEach>5000 && valEach<20000){
+                    text_lightClass.setText("partial shade");
+                }
+                else if(valEach>20000 && valEach<30000){
+                    text_lightClass.setText("full sun");
+                }
+                else{
+                    text_lightClass.setText("Apocalypse");
+                }
+            }
 
         }
     }
@@ -51,4 +74,9 @@ public class Activity_lightSensor extends AppCompatActivity implements SensorEve
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
 
     }
+
+//    public void back(){
+//        getFragmentManager().popBackStack();
+//    }
+
 }
