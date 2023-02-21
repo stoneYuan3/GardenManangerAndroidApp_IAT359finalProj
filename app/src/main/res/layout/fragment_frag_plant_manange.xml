@@ -19,9 +19,10 @@
             android:textSize="30sp" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/button_addPlant"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="startAddPlantActivity"
             android:text="add new plants" />
 
         <androidx.recyclerview.widget.RecyclerView

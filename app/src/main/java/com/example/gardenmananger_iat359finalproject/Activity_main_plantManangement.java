@@ -64,6 +64,11 @@ public class Activity_main_plantManangement extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void startAddPlantActivity(View v){
+        Intent intent=new Intent(this,Activity_addPlants.class);
+        startActivity(intent);
+    }
+
     public void gotoRecord(){
         Toast.makeText(this,"go to record",Toast.LENGTH_SHORT).show();
     }
