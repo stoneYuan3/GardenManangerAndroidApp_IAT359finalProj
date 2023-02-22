@@ -3,19 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="20dp"
     tools:context="com.example.recyclerView.Layout_plantView">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_weight="0"
             android:src="@drawable/ic_baseline_local_florist_96" />
 
         <LinearLayout
@@ -26,21 +28,43 @@
             android:layout_weight="1"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/plantInfo_title"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Plant Name"
-                android:textColor="#000000"
-                android:textSize="20sp" />
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Ideal Conditions" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/plantInfo_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0"
+                        android:gravity="center_vertical"
+                        android:text="Plant Name"
+                        android:textColor="#000000"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/textView2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Ideal Conditions" />
+                </LinearLayout>
+
+                <ImageButton
+                    android:id="@+id/imageButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    app:srcCompat="@drawable/ic_baseline_home_24" />
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -180,4 +204,5 @@
         </LinearLayout>
 
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
