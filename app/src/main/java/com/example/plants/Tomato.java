@@ -1,6 +1,6 @@
 package com.example.plants;
 
-public class Tomato extends PlantsInfo{
+public class Tomato{
 
     public Tomato(){
 
