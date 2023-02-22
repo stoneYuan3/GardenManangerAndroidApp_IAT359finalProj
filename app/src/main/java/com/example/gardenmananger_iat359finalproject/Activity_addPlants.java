@@ -5,6 +5,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 
 import com.example.plants.PlantsInfoAdd_recycler;
 
@@ -17,11 +20,16 @@ public class Activity_addPlants extends AppCompatActivity {
     private LinearLayoutManager layoutManager;
 
     private ArrayList<String> list_plantAdd=new ArrayList<String>();
+    private ArrayList list_selectedPlant;
+
+    private Button button_confirm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_plants);
+
+        button_confirm=findViewById(R.id.button_confirm);
 
         list_plantAdd.add("Tomato");
         list_plantAdd.add("Potato");
@@ -34,5 +42,12 @@ public class Activity_addPlants extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(this);
         masterRecycler.setLayoutManager(layoutManager);
 
+    }
+
+    public void getSelected(View v){
+        list_selectedPlant=plantInfoAddRecycler.getSelectedList();
+        for(int i=0;i<list_selectedPlant.size();i++){
+            Log.d("selectedList",String.valueOf(list_selectedPlant.get(i)));
+        }
     }
 }

@@ -1,6 +1,7 @@
 package com.example.plants;
 
 import android.graphics.Color;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,10 +23,19 @@ public class PlantsInfoAdd_recycler extends RecyclerView.Adapter<PlantsInfoAdd_r
 
 //    private String title;
     private ArrayList<String> list_plant;
+
+    protected static ArrayList list_selectedPlant;
+
+    protected static ArrayList list_addPlantList,list_removePlantList;
+
+
     public PlantsInfoAdd_recycler(ArrayList<String> list){
         this.list_plant=list;
-    }
 
+        list_selectedPlant=new ArrayList<>();
+        list_addPlantList=new ArrayList();
+        list_removePlantList=new ArrayList();
+    }
 
     @NonNull
     @Override
@@ -48,6 +58,12 @@ public class PlantsInfoAdd_recycler extends RecyclerView.Adapter<PlantsInfoAdd_r
     public int getItemCount() {
         return list_plant.size();
     }
+
+
+    public ArrayList getSelectedList(){
+        return list_selectedPlant;
+    }
+
 
     public static class PlantInfoAddView extends RecyclerView.ViewHolder implements View.OnClickListener{
 
@@ -73,12 +89,24 @@ public class PlantsInfoAdd_recycler extends RecyclerView.Adapter<PlantsInfoAdd_r
 //                info.setBackgroundColor(Color.WHITE);
                 button_check.setBackground(itemView.getContext().getDrawable(R.drawable.unchecked_24dp));
                 master.setAlpha(0.5f);
+
+                for(int i=0;i<list_selectedPlant.size();i++){
+                    if(list_selectedPlant.get(i).equals(this.getAdapterPosition())){
+                        list_selectedPlant.remove(i);
+                    }
+                }
+
                 isSelected=false;
             }
             else{
 //                info.setBackgroundColor(Color.BLUE);
                 button_check.setBackground(itemView.getContext().getDrawable(R.drawable.checked_24dp));
                 master.setAlpha(1.0f);
+//                Log.d("clickListener",String.valueOf(this.getItemId())+" is selected");
+                Log.d("clickListener",String.valueOf(this.getAdapterPosition())+" is selected");
+
+                list_selectedPlant.add(this.getAdapterPosition());
+
                 isSelected=true;
             }
 
