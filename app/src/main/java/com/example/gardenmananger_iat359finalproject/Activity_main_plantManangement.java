@@ -3,8 +3,11 @@ package com.example.gardenmananger_iat359finalproject;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
@@ -25,7 +28,6 @@ public class Activity_main_plantManangement extends AppCompatActivity {
     Frag_settings fragSettings=new Frag_settings();
 
     plantDatabase database;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,6 +92,12 @@ public class Activity_main_plantManangement extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void prefs(View v) {
+        SharedPreferences preferences = getSharedPreferences("MyData", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+//        editor.putString("interfaceColour", "TEST");
+        editor.commit();
+    }
     public void gotoRecord(){
         Toast.makeText(this,"go to record",Toast.LENGTH_SHORT).show();
     }
