@@ -24,6 +24,8 @@ public class Activity_main_plantManangement extends AppCompatActivity {
     Frag_tools fragTools=new Frag_tools();
     Frag_settings fragSettings=new Frag_settings();
 
+    plantDatabase database;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +57,26 @@ public class Activity_main_plantManangement extends AppCompatActivity {
                 return false;
             }
         });
+
+        database = new plantDatabase(this);
+    }
+
+    public void addDatabaseEntry (View view)
+    {
+//      NOTE adding an entry to the database. Needs editText of user input
+
+//        String name = name.getText().toString();
+
+//        Toast.makeText(this, name, Toast.LENGTH_SHORT).show();
+//        long id = database.insertData(name);
+//        if (id < 0)
+//        {
+//            Toast.makeText(this, "fail", Toast.LENGTH_SHORT).show();
+//        }
+//        else
+//        {
+//            Toast.makeText(this, "success", Toast.LENGTH_SHORT).show();
+//        }
 
     }
 
