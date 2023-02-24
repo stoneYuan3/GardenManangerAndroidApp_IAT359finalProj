@@ -31,8 +31,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="0"
             android:ems="10"
-            android:inputType="date"
-            android:text="Year" />
+            android:hint="Enter a year"
+            android:inputType="date" />
 
         <Button
             android:id="@+id/coverButton"
@@ -41,6 +41,14 @@
             android:layout_gravity="center"
             android:layout_weight="0"
             android:text="Add Cover Image" />
+
+        <Button
+            android:id="@+id/submitButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_weight="0"
+            android:text="submit" />
 
     </LinearLayout>
 
