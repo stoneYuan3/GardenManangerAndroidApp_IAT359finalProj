@@ -12,6 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GardenMananger_IAT359FinalProject"
         tools:targetApi="31">
+
+        <activity
+            android:name=".Activity_addRecord"
+            android:exported="false" />
         <activity
             android:name=".Activity_addPlants"
             android:exported="false">
@@ -19,13 +23,7 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-        <activity
-            android:name=".Layout_plantView"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
+
         <activity
             android:name=".Activity_lightSensor"
             android:exported="false">

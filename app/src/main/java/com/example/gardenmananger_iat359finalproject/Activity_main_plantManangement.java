@@ -1,15 +1,16 @@
 package com.example.gardenmananger_iat359finalproject;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-import com.example.recyclerView.Layout_plantView;
+import com.example.gardenmananger_iat359finalproject.database.plantDatabase;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
@@ -25,6 +26,7 @@ public class Activity_main_plantManangement extends AppCompatActivity {
     Frag_tools fragTools=new Frag_tools();
     Frag_settings fragSettings=new Frag_settings();
 
+    plantDatabase database;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,6 +59,26 @@ public class Activity_main_plantManangement extends AppCompatActivity {
             }
         });
 
+        database = new plantDatabase(this);
+    }
+
+    public void addDatabaseEntry (View view)
+    {
+//      NOTE adding an entry to the database. Needs editText of user input
+
+//        String name = name.getText().toString();
+
+//        Toast.makeText(this, name, Toast.LENGTH_SHORT).show();
+//        long id = database.insertData(name);
+//        if (id < 0)
+//        {
+//            Toast.makeText(this, "fail", Toast.LENGTH_SHORT).show();
+//        }
+//        else
+//        {
+//            Toast.makeText(this, "success", Toast.LENGTH_SHORT).show();
+//        }
+
     }
 
     public void startToolActivity(View v){
@@ -69,6 +91,17 @@ public class Activity_main_plantManangement extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void startAddRecordActivity(View v){
+        Intent intent=new Intent(this, Activity_addRecord.class);
+        startActivity(intent);
+    }
+
+    public void prefs(View v) {
+        SharedPreferences preferences = getSharedPreferences("MyData", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+//        editor.putString("interfaceColour", "TEST");
+        editor.commit();
+    }
     public void gotoRecord(){
         Toast.makeText(this,"go to record",Toast.LENGTH_SHORT).show();
     }
