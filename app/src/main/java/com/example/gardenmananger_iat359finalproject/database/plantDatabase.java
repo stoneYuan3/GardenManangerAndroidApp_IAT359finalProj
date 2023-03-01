@@ -45,17 +45,26 @@ private final MyHelper helper;
         int index2 = cursor.getColumnIndex(Constants.NAME);
         int index3 = cursor.getColumnIndex(Constants.ICON);
         int index4 = cursor.getColumnIndex(Constants.REQ_SUNLIGHT);
+        int index5 = cursor.getColumnIndex(Constants.REQ_HUMIDITY);
+        int index6 = cursor.getColumnIndex(Constants.REQ_TEMPERATURE);
+        int index7 = cursor.getColumnIndex(Constants.REQ_SOILPH);
 
-        ArrayList<String> mArrayList = new ArrayList<String>();
+
+        ArrayList mArrayList = new ArrayList();
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
             String plantName = cursor.getString(index1);
             String plantType = cursor.getString(index2);
-            String plantLocation = cursor.getString(index3);
-            String plantLatin = cursor.getString(index4);
+            String plantIcon = cursor.getString(index3);
+            String plantSunlight = cursor.getString(index4);
+            String plantHumidity = cursor.getString(index5);
+            String plantTemperature = cursor.getString(index6);
+            String plantPh = cursor.getString(index7);
 
-            String s = plantName +"," + plantType +","+plantLocation+","+plantLatin;
-            mArrayList.add(s);
+            String[] plantDataEach={
+                    plantName,plantType,plantIcon,plantSunlight,plantHumidity,plantTemperature,plantPh
+            };
+            mArrayList.add(plantDataEach);
             cursor.moveToNext();
         }
         return mArrayList;

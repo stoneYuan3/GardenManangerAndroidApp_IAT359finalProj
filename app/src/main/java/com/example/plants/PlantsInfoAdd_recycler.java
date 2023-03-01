@@ -22,7 +22,7 @@ import java.util.ArrayList;
 public class PlantsInfoAdd_recycler extends RecyclerView.Adapter<PlantsInfoAdd_recycler.PlantInfoAddView>{
 
 //    private String title;
-    private ArrayList<String> list_plant;
+    private ArrayList list_plant;
 
     protected static ArrayList list_selectedPlant;
 
@@ -32,7 +32,7 @@ public class PlantsInfoAdd_recycler extends RecyclerView.Adapter<PlantsInfoAdd_r
     public PlantsInfoAdd_recycler(ArrayList<String> list){
         this.list_plant=list;
 
-        list_selectedPlant=new ArrayList<>();
+        list_selectedPlant=new ArrayList();
         list_addPlantList=new ArrayList();
         list_removePlantList=new ArrayList();
     }
@@ -49,8 +49,23 @@ public class PlantsInfoAdd_recycler extends RecyclerView.Adapter<PlantsInfoAdd_r
     @Override
     public void onBindViewHolder(@NonNull PlantInfoAddView holder, int position) {
 
-        String title=list_plant.get(position);
+        String[] plantDataEach = (String[]) list_plant.get(position);
+        //0 is id, 2 is icon
+        String id=plantDataEach[0];
+        String title=plantDataEach[1];
+        String sunlight=plantDataEach[3];
+        String humidity=plantDataEach[4];
+        String temperature=plantDataEach[5];
+        String ph=plantDataEach[6];
+
         holder.plantInfo_title.setText(title);
+        holder.id=id;
+        holder.plantInfo_sunlight.setText(sunlight);
+        holder.plantInfo_soilMoist.setText(humidity);
+        holder.plantInfo_temperature.setText(temperature);
+        holder.plantInfo_soilPH.setText(ph);
+
+        holder.plantName=title;
     }
 
 
@@ -67,13 +82,20 @@ public class PlantsInfoAdd_recycler extends RecyclerView.Adapter<PlantsInfoAdd_r
 
     public static class PlantInfoAddView extends RecyclerView.ViewHolder implements View.OnClickListener{
 
-        public TextView plantInfo_title;
+        public TextView plantInfo_title, plantInfo_sunlight, plantInfo_soilMoist,plantInfo_temperature,plantInfo_soilPH;
         public ImageButton button_check;
         boolean isSelected;
+
+        public String id,plantName;
 
         public PlantInfoAddView(@NonNull View itemView) {
             super(itemView);
             plantInfo_title=(TextView) itemView.findViewById(R.id.plantInfo_title);
+            plantInfo_sunlight=(TextView) itemView.findViewById(R.id.plantInfo_sunlight);
+            plantInfo_soilMoist=(TextView) itemView.findViewById(R.id.plantInfo_soilMoist);
+            plantInfo_temperature=(TextView) itemView.findViewById(R.id.plantInfo_temperature);
+            plantInfo_soilPH=(TextView) itemView.findViewById(R.id.plantInfo_soilPH);
+
             button_check=itemView.findViewById(R.id.button_check);
 
             itemView.setOnClickListener(this);
@@ -91,7 +113,8 @@ public class PlantsInfoAdd_recycler extends RecyclerView.Adapter<PlantsInfoAdd_r
                 master.setAlpha(0.5f);
 
                 for(int i=0;i<list_selectedPlant.size();i++){
-                    if(list_selectedPlant.get(i).equals(this.getAdapterPosition())){
+                    if(list_selectedPlant.get(i).equals(this.plantName)){
+                        Log.d("clickListener",plantName+ " no." + this.getAdapterPosition() +" is removed");
                         list_selectedPlant.remove(i);
                     }
                 }
@@ -103,9 +126,9 @@ public class PlantsInfoAdd_recycler extends RecyclerView.Adapter<PlantsInfoAdd_r
                 button_check.setBackground(itemView.getContext().getDrawable(R.drawable.checked_24dp));
                 master.setAlpha(1.0f);
 //                Log.d("clickListener",String.valueOf(this.getItemId())+" is selected");
-                Log.d("clickListener",String.valueOf(this.getAdapterPosition())+" is selected");
+                Log.d("clickListener",plantName+ " no." + this.getAdapterPosition() +" is selected");
 
-                list_selectedPlant.add(this.getAdapterPosition());
+                list_selectedPlant.add(plantName);
 
                 isSelected=true;
             }

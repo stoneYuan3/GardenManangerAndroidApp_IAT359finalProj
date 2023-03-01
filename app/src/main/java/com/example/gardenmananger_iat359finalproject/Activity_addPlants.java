@@ -9,6 +9,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.gardenmananger_iat359finalproject.database.MyHelper;
+import com.example.gardenmananger_iat359finalproject.database.plantDatabase;
 import com.example.plants.PlantsInfoAdd_recycler;
 
 import java.util.ArrayList;
@@ -24,6 +26,9 @@ public class Activity_addPlants extends AppCompatActivity {
 
     private Button button_confirm;
 
+    plantDatabase database;
+    MyHelper helper;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,11 +36,15 @@ public class Activity_addPlants extends AppCompatActivity {
 
         button_confirm=findViewById(R.id.button_confirm);
 
-        list_plantAdd.add("Tomato");
-        list_plantAdd.add("Potato");
+        database = new plantDatabase(this);
+        helper=new MyHelper(this);
+        ArrayList list_presetPlants=database.PreparePresetPlantData();
+
+//        list_plantAdd.add("Tomato");
+//        list_plantAdd.add("Potato");
 
         masterRecycler=findViewById(R.id.list_plantAdd);
-        plantInfoAddRecycler = new PlantsInfoAdd_recycler(list_plantAdd);
+        plantInfoAddRecycler = new PlantsInfoAdd_recycler(list_presetPlants);
 
         masterRecycler.setAdapter(plantInfoAddRecycler);
         // use a linear layout manager
