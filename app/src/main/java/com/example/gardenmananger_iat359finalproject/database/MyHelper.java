@@ -14,9 +14,13 @@ public class MyHelper extends SQLiteOpenHelper {
             "CREATE TABLE "+
                     Constants.DATABASE_NAME + " (" +
                     Constants.UID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                    Constants.NAME + " TEXT);" ;
+                    Constants.NAME + " TEXT, " +
+                    Constants.SUNLIGHT + " TEXT, " +
+                    Constants.TEMPERATURE + " TEXT, " +
+                    Constants.MOIST + " TEXT, " +
+                    Constants.PH + " TEXT);" ;
 
-    private static final String DROP_DATABASE = "DROP DATABASE IF EXISTS " + Constants.DATABASE_NAME;
+    private static final String DROP_DATABASE = "DROP TABLE IF EXISTS " + Constants.DATABASE_NAME;
 
     public MyHelper(Context context){
         super (context, Constants.DATABASE_NAME, null, Constants.DATABASE_VERSION);

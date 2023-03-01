@@ -7,7 +7,7 @@ import java.lang.reflect.Array;
 public class PlantsInfo {
 
     protected int plant_id;
-    protected String name;
+    public static String name;
     protected Drawable icon_plant;
     protected String sunlight,temperature,moist,ph;
 

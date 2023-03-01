@@ -25,8 +25,6 @@ public class Activity_main_plantManangement extends AppCompatActivity {
     Frag_records fragRecords=new Frag_records();
     Frag_tools fragTools=new Frag_tools();
     Frag_settings fragSettings=new Frag_settings();
-
-    plantDatabase database;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,7 +57,6 @@ public class Activity_main_plantManangement extends AppCompatActivity {
             }
         });
 
-        database = new plantDatabase(this);
     }
 
     public void addDatabaseEntry (View view)
