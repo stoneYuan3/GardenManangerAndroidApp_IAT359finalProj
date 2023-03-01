@@ -5,6 +5,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import java.util.ArrayList;
+
 public class plantDatabase {
 private SQLiteDatabase database;
 private Context context;
@@ -25,14 +27,40 @@ private final MyHelper helper;
         return id;
     }
 
-    public Cursor getData()
+    public Cursor getPresetPlantData()
     {
         SQLiteDatabase db = helper.getWritableDatabase();
 
-        String[] columns = {Constants.UID, Constants.NAME};
-        Cursor cursor = db.query(Constants.DATABASE_NAME, columns, null, null, null, null, null);
+        String[] columns = {Constants.UID, Constants.NAME, Constants.ICON,Constants.REQ_SUNLIGHT,
+                Constants.REQ_HUMIDITY,Constants.REQ_TEMPERATURE,Constants.REQ_SOILPH};
+        Cursor cursor = db.query(Constants.TABLE_PRESET_PLANTS_NAME, columns, null, null, null, null, null);
         return cursor;
     }
+
+
+    public ArrayList PreparePresetPlantData(){
+        Cursor cursor = getPresetPlantData();
+
+        int index1 = cursor.getColumnIndex(Constants.UID);
+        int index2 = cursor.getColumnIndex(Constants.NAME);
+        int index3 = cursor.getColumnIndex(Constants.ICON);
+        int index4 = cursor.getColumnIndex(Constants.REQ_SUNLIGHT);
+
+        ArrayList<String> mArrayList = new ArrayList<String>();
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            String plantName = cursor.getString(index1);
+            String plantType = cursor.getString(index2);
+            String plantLocation = cursor.getString(index3);
+            String plantLatin = cursor.getString(index4);
+
+            String s = plantName +"," + plantType +","+plantLocation+","+plantLatin;
+            mArrayList.add(s);
+            cursor.moveToNext();
+        }
+        return mArrayList;
+    }
+
 
     public String getSelectedData(String type)
     {

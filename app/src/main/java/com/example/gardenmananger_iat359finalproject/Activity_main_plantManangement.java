@@ -5,14 +5,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.gardenmananger_iat359finalproject.database.MyHelper;
 import com.example.gardenmananger_iat359finalproject.database.plantDatabase;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
+
+import java.util.ArrayList;
 
 //bottom navigation reference: https://www.youtube.com/watch?v=OV25x3a55pk
 //https://developer.android.com/guide/fragments
@@ -27,6 +32,8 @@ public class Activity_main_plantManangement extends AppCompatActivity {
     Frag_settings fragSettings=new Frag_settings();
 
     plantDatabase database;
+    MyHelper helper;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,6 +67,11 @@ public class Activity_main_plantManangement extends AppCompatActivity {
         });
 
         database = new plantDatabase(this);
+        helper=new MyHelper(this);
+        ArrayList arr=database.PreparePresetPlantData();
+        for(int i=0;i<arr.size();i++){
+            Log.d("presetPlants",arr.get(i).toString());
+        }
     }
 
     public void addDatabaseEntry (View view)
