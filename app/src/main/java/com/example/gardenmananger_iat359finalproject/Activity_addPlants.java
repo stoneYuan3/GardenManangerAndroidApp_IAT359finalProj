@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.SQLException;
 import android.os.Bundle;
 import android.util.Log;
@@ -26,7 +27,7 @@ public class Activity_addPlants extends AppCompatActivity {
     private LinearLayoutManager layoutManager;
 
     private ArrayList<String> list_plantAdd=new ArrayList<String>();
-    private ArrayList list_selectedPlant;
+    private ArrayList list_selectedPlant,list_removePlant;
 
     private Button button_confirm;
 
@@ -43,9 +44,10 @@ public class Activity_addPlants extends AppCompatActivity {
         database = new plantDatabase(this);
         helper=new MyHelper(this);
         ArrayList list_presetPlants=database.PreparePresetPlantData("preset");
+        ArrayList list_userPlants=database.PreparePresetPlantData("user");
 
         masterRecycler=findViewById(R.id.list_plantAdd);
-        plantInfoAddRecycler = new PlantsInfoAdd_recycler(list_presetPlants);
+        plantInfoAddRecycler = new PlantsInfoAdd_recycler(list_presetPlants,list_userPlants);
 
         masterRecycler.setAdapter(plantInfoAddRecycler);
         // use a linear layout manager
@@ -62,33 +64,62 @@ public class Activity_addPlants extends AppCompatActivity {
 
     public void insertPlants(View v){
         list_selectedPlant=plantInfoAddRecycler.getSelectedList();
-        for(int i=0;i<list_selectedPlant.size();i++){
-            Log.d("selectedList",String.valueOf(list_selectedPlant.get(i)));
-        }
+        list_removePlant=plantInfoAddRecycler.getRemoveList();
 
-        list_selectedPlant=plantInfoAddRecycler.getSelectedList();
+//        for(int i=0;i<list_selectedPlant.size();i++){
+//            Log.d("selectedList",String.valueOf(list_selectedPlant.get(i)));
+//        }
+        boolean addInfo=false, removeInfo=false;
         for(int i=0;i<list_selectedPlant.size();i++){
             String[] plantDataEach= (String[]) list_selectedPlant.get(i);
-            String name=plantDataEach[0];
-            String icon=plantDataEach[1];
-            String sunlight=plantDataEach[2];
-            String humidity=plantDataEach[3];
-            String temperature=plantDataEach[4];
-            String ph=plantDataEach[5];
+            String plant_id=plantDataEach[0];
+            String name=plantDataEach[1];
+            String icon=plantDataEach[2];
+            String sunlight=plantDataEach[3];
+            String humidity=plantDataEach[4];
+            String temperature=plantDataEach[5];
+            String ph=plantDataEach[6];
             String[] dataArr={name, icon, sunlight, humidity,temperature,ph};
             long id = database.insertUserPlants(dataArr);
             if (id < 0)
             {
                 Toast.makeText(this, "fail", Toast.LENGTH_SHORT).show();
-                Log.d("insert","confirm fail");
+                Log.d("insert","confirm add info fail");
             }
             else
             {
                 Toast.makeText(this, "success", Toast.LENGTH_SHORT).show();
-                Log.d("insert","confirm successful");
-                finish();
+                Log.d("insert","confirm add info successful");
+                addInfo=true;
             }
         }
+        for(int i=0;i<list_removePlant.size();i++){
+            String[] plantDataEach= (String[]) list_removePlant.get(i);
+            String name=plantDataEach[1];
+            try {
+                database.deleteUserPlantsByName(name);
+                Toast.makeText(this, "success", Toast.LENGTH_SHORT).show();
+                Log.d("insert","confirm remove info successful");
+                removeInfo=true;
+            } catch (SQLException e) {
+                Toast.makeText(this, "fail", Toast.LENGTH_SHORT).show();
+                Log.d("insert","confirm remove info fail");
+            }
+
+        }
+
+        if(list_selectedPlant.size()>0 && list_removePlant.size()>0){
+            if(addInfo && removeInfo){
+                Intent intent=new Intent(this,Activity_main_plantManangement.class);
+                startActivity(intent);            }
+        }
+        else{
+            if(addInfo || removeInfo){
+                Intent intent=new Intent(this,Activity_main_plantManangement.class);
+                startActivity(intent);
+            }
+        }
+
 
     }
 }

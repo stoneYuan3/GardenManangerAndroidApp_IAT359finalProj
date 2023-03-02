@@ -52,10 +52,10 @@ public class Frag_plantManange extends Fragment implements View.OnClickListener 
 
         database = new plantDatabase(context);
         helper=new MyHelper(context);
-        ArrayList list_presetPlants=database.PreparePresetPlantData("user");
+        ArrayList list_userPlants=database.PreparePresetPlantData("user");
 
         masterRecycler=view.findViewById(R.id.list_plantShow);
-        plantInfoShowRecycler = new PlantsInfoShow_recycler(list_presetPlants);
+        plantInfoShowRecycler = new PlantsInfoShow_recycler(list_userPlants);
 
         masterRecycler.setAdapter(plantInfoShowRecycler);
         // use a linear layout manager

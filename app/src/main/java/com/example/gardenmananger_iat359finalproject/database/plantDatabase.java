@@ -33,6 +33,12 @@ private final MyHelper helper;
         long id = database.insert(Constants.TABLE_USERADD_PLANTS_NAME, null, contentValues);
         return id;
     }
+    public void deleteUserPlantsByName(String name) {
+        database = helper.getWritableDatabase();
+        database.execSQL("DELETE FROM " + Constants.TABLE_USERADD_PLANTS_NAME
+                + " WHERE " + Constants.NAME + " = '" + name + "'");
+//        return id;
+    }
 
     public Cursor getPresetPlantData()
     {
