@@ -53,6 +53,7 @@ public class PlantsInfoAdd_recycler extends RecyclerView.Adapter<PlantsInfoAdd_r
         //0 is id, 2 is icon
         String id=plantDataEach[0];
         String title=plantDataEach[1];
+        String icon=plantDataEach[2];
         String sunlight=plantDataEach[3];
         String humidity=plantDataEach[4];
         String temperature=plantDataEach[5];
@@ -66,6 +67,12 @@ public class PlantsInfoAdd_recycler extends RecyclerView.Adapter<PlantsInfoAdd_r
         holder.plantInfo_soilPH.setText(ph);
 
         holder.plantName=title;
+        holder.sunlight=sunlight;
+        holder.humidity=humidity;
+        holder.temperature=temperature;
+        holder.ph=ph;
+        holder.icon=icon;
+
     }
 
 
@@ -86,7 +93,7 @@ public class PlantsInfoAdd_recycler extends RecyclerView.Adapter<PlantsInfoAdd_r
         public ImageButton button_check;
         boolean isSelected;
 
-        public String id,plantName;
+        public String id,plantName,sunlight,humidity,temperature,ph,icon;
 
         public PlantInfoAddView(@NonNull View itemView) {
             super(itemView);
@@ -113,9 +120,10 @@ public class PlantsInfoAdd_recycler extends RecyclerView.Adapter<PlantsInfoAdd_r
                 master.setAlpha(0.5f);
 
                 for(int i=0;i<list_selectedPlant.size();i++){
-                    if(list_selectedPlant.get(i).equals(this.plantName)){
+                    String[] dataEach= (String[]) list_selectedPlant.get(i);
+                    if(dataEach[0].equals(this.plantName)){
                         Log.d("clickListener",plantName+ " no." + this.getAdapterPosition() +" is removed");
-                        list_selectedPlant.remove(i);
+                        list_selectedPlant.remove(this.getAdapterPosition());
                     }
                 }
 
@@ -127,8 +135,8 @@ public class PlantsInfoAdd_recycler extends RecyclerView.Adapter<PlantsInfoAdd_r
                 master.setAlpha(1.0f);
 //                Log.d("clickListener",String.valueOf(this.getItemId())+" is selected");
                 Log.d("clickListener",plantName+ " no." + this.getAdapterPosition() +" is selected");
-
-                list_selectedPlant.add(plantName);
+                String[] plantData={plantName,icon,sunlight,humidity,temperature,ph};
+                list_selectedPlant.add(plantData);
 
                 isSelected=true;
             }

@@ -18,12 +18,19 @@ private final MyHelper helper;
         helper = new MyHelper(context);
     }
 
-    public long insertData (String name)
+    public long insertUserPlants (String[] dataArr)
     {
         database = helper.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(Constants.NAME, name);
-        long id = database.insert(Constants.DATABASE_NAME, null, contentValues);
+
+        contentValues.put(Constants.NAME, dataArr[0]);
+        contentValues.put(Constants.ICON, dataArr[1]);
+        contentValues.put(Constants.REQ_SUNLIGHT, dataArr[2]);
+        contentValues.put(Constants.REQ_HUMIDITY, dataArr[3]);
+        contentValues.put(Constants.REQ_TEMPERATURE, dataArr[4]);
+        contentValues.put(Constants.REQ_SOILPH, dataArr[5]);
+
+        long id = database.insert(Constants.TABLE_USERADD_PLANTS_NAME, null, contentValues);
         return id;
     }
 
@@ -38,8 +45,24 @@ private final MyHelper helper;
     }
 
 
-    public ArrayList PreparePresetPlantData(){
-        Cursor cursor = getPresetPlantData();
+    //pull preset plant data and turn them into an arraylist
+    //for the add plants recycler view to generate UI
+    public ArrayList PreparePresetPlantData(String option){
+
+        SQLiteDatabase db = helper.getWritableDatabase();
+
+        String[] columns = {Constants.UID, Constants.NAME, Constants.ICON,Constants.REQ_SUNLIGHT,
+                Constants.REQ_HUMIDITY,Constants.REQ_TEMPERATURE,Constants.REQ_SOILPH};
+
+        Cursor cursor;
+        switch (option){
+            case "user":
+                cursor = db.query(Constants.TABLE_USERADD_PLANTS_NAME, columns, null, null, null, null, null);
+                break;
+            default:
+                cursor = db.query(Constants.TABLE_PRESET_PLANTS_NAME, columns, null, null, null, null, null);
+                break;
+        }
 
         int index1 = cursor.getColumnIndex(Constants.UID);
         int index2 = cursor.getColumnIndex(Constants.NAME);
@@ -48,7 +71,6 @@ private final MyHelper helper;
         int index5 = cursor.getColumnIndex(Constants.REQ_HUMIDITY);
         int index6 = cursor.getColumnIndex(Constants.REQ_TEMPERATURE);
         int index7 = cursor.getColumnIndex(Constants.REQ_SOILPH);
-
 
         ArrayList mArrayList = new ArrayList();
         cursor.moveToFirst();

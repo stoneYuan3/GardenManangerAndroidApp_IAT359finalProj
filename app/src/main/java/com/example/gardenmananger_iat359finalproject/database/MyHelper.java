@@ -26,13 +26,23 @@ public class MyHelper extends SQLiteOpenHelper {
                     + Constants.REQ_TEMPERATURE + " TEXT,"
                     + Constants.REQ_SOILPH + " TEXT " +  ");" ;
 
+    private static final String CREATE_TABLE_USERADD_PLANTS =
+            "CREATE TABLE "+
+                    Constants.TABLE_USERADD_PLANTS_NAME + " (" +
+                    Constants.UID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    Constants.NAME + " TEXT," + Constants.ICON + " TEXT," +
+                    Constants.REQ_SUNLIGHT + " TEXT," + Constants.REQ_HUMIDITY + " TEXT,"
+                    + Constants.REQ_TEMPERATURE + " TEXT,"
+                    + Constants.REQ_SOILPH + " TEXT " +  ");" ;
+
 //    private static final String INSERT_PRESET_PLANT =
 //            "INSERT INTO" + Constants.TABLE_PRESET_PLANTS_NAME +
 //                    "(" + Constants.ICON + " " + Constants.REQ_SUNLIGHT + " " + Constants.REQ_HUMIDITY
 //                    + " " + Constants.REQ_TEMPERATURE + " " + Constants.REQ_SOILPH +
 //                    " ) " + "VALUES (1, 'John Doe', 'johndoe@example.com');" ;
 
-    private static final String DROP_DATABASE = "DROP TABLE IF EXISTS " +Constants.TABLE_PRESET_PLANTS_NAME;
+    private static final String DROP_PRESET_TABLE = "DROP TABLE IF EXISTS " +Constants.TABLE_PRESET_PLANTS_NAME;
+    private static final String DROP_USER_TABLE = "DROP TABLE IF EXISTS " +Constants.TABLE_USERADD_PLANTS_NAME;
 
     public MyHelper(Context context){
         super (context, Constants.DATABASE_NAME, null, Constants.DATABASE_VERSION);
@@ -43,6 +53,7 @@ public class MyHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         try {
             db.execSQL(CREATE_TABLE_PRESET_PLANTS);
+            db.execSQL(CREATE_TABLE_USERADD_PLANTS);
 
             for(int i=0;i<presetPlants.length; i++){
                 String[] plantEach=presetPlants[i];
@@ -77,7 +88,8 @@ public class MyHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase database, int oldVersion, int newVersion) {
         try {
-            database.execSQL(DROP_DATABASE);
+            database.execSQL(DROP_PRESET_TABLE);
+            database.execSQL(DROP_USER_TABLE);
             onCreate(database);
             Toast.makeText(context, "onUpgrade called", Toast.LENGTH_SHORT).show();
         } catch (SQLException e) {

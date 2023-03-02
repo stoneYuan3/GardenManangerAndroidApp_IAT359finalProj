@@ -14,6 +14,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.gardenmananger_iat359finalproject.database.MyHelper;
+import com.example.gardenmananger_iat359finalproject.database.plantDatabase;
 import com.example.plants.PlantsInfoAdd_recycler;
 import com.example.plants.PlantsInfoShow_recycler;
 
@@ -31,6 +33,9 @@ public class Frag_plantManange extends Fragment implements View.OnClickListener 
 
     private ArrayList<String> list_plantShow;
 
+    plantDatabase database;
+    MyHelper helper;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -44,8 +49,13 @@ public class Frag_plantManange extends Fragment implements View.OnClickListener 
         list_plantShow.add("Tomato");
         list_plantShow.add("Potato");
 
+
+        database = new plantDatabase(context);
+        helper=new MyHelper(context);
+        ArrayList list_presetPlants=database.PreparePresetPlantData("user");
+
         masterRecycler=view.findViewById(R.id.list_plantShow);
-        plantInfoShowRecycler = new PlantsInfoShow_recycler(list_plantShow);
+        plantInfoShowRecycler = new PlantsInfoShow_recycler(list_presetPlants);
 
         masterRecycler.setAdapter(plantInfoShowRecycler);
         // use a linear layout manager
