@@ -16,7 +16,6 @@ public class Frag_tools extends Fragment {
 
     TextView tool_lightsense;
     Context context;
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

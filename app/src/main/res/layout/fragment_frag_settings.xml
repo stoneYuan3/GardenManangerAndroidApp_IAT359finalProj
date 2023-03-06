@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".Frag_settings">
 
     <LinearLayout
@@ -11,12 +11,11 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/addRecordTextView"
+            android:id="@+id/settingsTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:background="#7BD6B9"
             android:gravity="center"
             android:padding="20dp"
             android:text="Settings"
@@ -40,6 +39,57 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Interface Colour: " />
+
+        <RadioGroup
+            android:id="@+id/interfaceColourRadioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/redRB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Red" />
+
+            <RadioButton
+                android:id="@+id/blueRB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Blue" />
+
+            <RadioButton
+                android:id="@+id/greenRB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Green" />
+
+            <RadioButton
+                android:id="@+id/yellowRB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Yellow" />
+
+            <RadioButton
+                android:id="@+id/purpleRB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Purple" />
+
+            <RadioButton
+                android:id="@+id/orangeRB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Orange" />
+
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/submitColour"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="prefs"
+            android:text="Button" />
 
     </LinearLayout>
 

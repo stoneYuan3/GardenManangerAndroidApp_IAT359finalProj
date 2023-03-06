@@ -6,10 +6,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.gardenmananger_iat359finalproject.database.MyHelper;
@@ -22,8 +24,7 @@ import java.util.ArrayList;
 //bottom navigation reference: https://www.youtube.com/watch?v=OV25x3a55pk
 //https://developer.android.com/guide/fragments
 
-public class Activity_main_plantManangement extends AppCompatActivity {
-
+public class Activity_main_plantManangement extends AppCompatActivity implements View.OnClickListener{
     BottomNavigationView nav_bottom;
 
     Frag_plantManange fragPlantManange=new Frag_plantManange();
@@ -34,6 +35,9 @@ public class Activity_main_plantManangement extends AppCompatActivity {
     plantDatabase database;
     MyHelper helper;
 
+    public static final String DEFAULT = "not available";
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +47,13 @@ public class Activity_main_plantManangement extends AppCompatActivity {
 
         //set layout to plant manangement layout by default
         getSupportFragmentManager().beginTransaction().replace(R.id.layout_main,fragPlantManange).commit();
+
+
+            SharedPreferences preferences = getSharedPreferences("MyData", Context.MODE_PRIVATE);
+            if (preferences.getString("colourId", DEFAULT) != null) {
+                fragSettings.interfaceColour = preferences.getString("colourId", DEFAULT);
+                fragRecords.interfaceColour = preferences.getString("colourId", DEFAULT);
+            }
 
         //listen to changes on icons in nav_bottom and set layout accordingly
         nav_bottom.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
@@ -111,14 +122,23 @@ public class Activity_main_plantManangement extends AppCompatActivity {
         Intent intent=new Intent(this, Activity_addRecord.class);
         startActivity(intent);
     }
+    public void gotoRecord(){
+        Toast.makeText(this,"go to record",Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onClick(View v) {
+
+    }
 
     public void prefs(View v) {
         SharedPreferences preferences = getSharedPreferences("MyData", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
-//        editor.putString("interfaceColour", "TEST");
+        editor.putString("colourId", "#" + fragSettings.id);
         editor.commit();
-    }
-    public void gotoRecord(){
-        Toast.makeText(this,"go to record",Toast.LENGTH_SHORT).show();
+        Toast.makeText(this,preferences.getString("colourId", DEFAULT),Toast.LENGTH_SHORT).show();
+        fragSettings.interfaceColour = preferences.getString("colourId", DEFAULT);
+        fragRecords.interfaceColour = preferences.getString("colourId", DEFAULT);
+        fragSettings.settingsTextView.setBackgroundColor(Color.parseColor(fragSettings.interfaceColour));
     }
 }

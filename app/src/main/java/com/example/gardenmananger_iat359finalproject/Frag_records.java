@@ -2,6 +2,7 @@ package com.example.gardenmananger_iat359finalproject;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -10,12 +11,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-
+import android.widget.TextView;
 
 
 public class Frag_records extends Fragment implements View.OnClickListener {
     Button addRecordButton;
     Context context;
+    public String interfaceColour;
+    private TextView settingsTextView;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -23,6 +26,11 @@ public class Frag_records extends Fragment implements View.OnClickListener {
 
         addRecordButton = view.findViewById(R.id.addRecordButton);
         context = container.getContext();
+        settingsTextView = view.findViewById(R.id.settingsTextView);
+
+        if (interfaceColour != null) {
+            settingsTextView.setBackgroundColor(Color.parseColor(interfaceColour));
+        }
 
         return view;
     }
