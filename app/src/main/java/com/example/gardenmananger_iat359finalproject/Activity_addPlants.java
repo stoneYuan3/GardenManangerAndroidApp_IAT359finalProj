@@ -1,16 +1,22 @@
 package com.example.gardenmananger_iat359finalproject;
 
+import static com.example.gardenmananger_iat359finalproject.Activity_main_plantManangement.DEFAULT;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.SQLException;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.gardenmananger_iat359finalproject.database.Constants;
@@ -22,6 +28,7 @@ import java.util.ArrayList;
 
 public class Activity_addPlants extends AppCompatActivity {
 
+    public String interfaceColour;
     private RecyclerView masterRecycler;
     private PlantsInfoAdd_recycler plantInfoAddRecycler;
     private LinearLayoutManager layoutManager;
@@ -34,6 +41,7 @@ public class Activity_addPlants extends AppCompatActivity {
     plantDatabase database;
     MyHelper helper;
 
+    private TextView addPlantsTextView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,6 +61,14 @@ public class Activity_addPlants extends AppCompatActivity {
         // use a linear layout manager
         layoutManager = new LinearLayoutManager(this);
         masterRecycler.setLayoutManager(layoutManager);
+
+        addPlantsTextView = findViewById(R.id.addPlantsTextView);
+
+        SharedPreferences preferences = getSharedPreferences("MyData", Context.MODE_PRIVATE);
+        interfaceColour = preferences.getString("colourId", DEFAULT);
+        if (interfaceColour != null) {
+            addPlantsTextView.setBackgroundColor(Color.parseColor(interfaceColour));
+        }
     }
 
     public void getSelected(View v){

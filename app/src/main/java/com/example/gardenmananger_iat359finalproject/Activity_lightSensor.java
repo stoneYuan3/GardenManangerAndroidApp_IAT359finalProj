@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 public class Activity_lightSensor extends AppCompatActivity implements SensorEventListener {
 
+    public String interfaceColour;
     private SensorManager sensorMaster;
     private Sensor sensor_light;
     private TextView text_lightsenData,text_lightClass;

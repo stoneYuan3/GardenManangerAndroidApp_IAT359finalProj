@@ -15,6 +15,7 @@
             android:id="@+id/text_toolList"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="#00000000"
             android:text="List of Tools"
             android:textColor="#000000"
             android:textSize="24sp" />

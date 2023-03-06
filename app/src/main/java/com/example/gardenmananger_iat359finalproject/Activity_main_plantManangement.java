@@ -53,6 +53,8 @@ public class Activity_main_plantManangement extends AppCompatActivity implements
             if (preferences.getString("colourId", DEFAULT) != null) {
                 fragSettings.interfaceColour = preferences.getString("colourId", DEFAULT);
                 fragRecords.interfaceColour = preferences.getString("colourId", DEFAULT);
+                fragPlantManange.interfaceColour = preferences.getString("colourId", DEFAULT);
+                fragTools.interfaceColour = preferences.getString("colourId", DEFAULT);
             }
 
         //listen to changes on icons in nav_bottom and set layout accordingly
@@ -139,6 +141,9 @@ public class Activity_main_plantManangement extends AppCompatActivity implements
         Toast.makeText(this,preferences.getString("colourId", DEFAULT),Toast.LENGTH_SHORT).show();
         fragSettings.interfaceColour = preferences.getString("colourId", DEFAULT);
         fragRecords.interfaceColour = preferences.getString("colourId", DEFAULT);
+        fragPlantManange.interfaceColour = preferences.getString("colourId", DEFAULT);
+        fragTools.interfaceColour = preferences.getString("colourId", DEFAULT);
+
         fragSettings.settingsTextView.setBackgroundColor(Color.parseColor(fragSettings.interfaceColour));
     }
 }

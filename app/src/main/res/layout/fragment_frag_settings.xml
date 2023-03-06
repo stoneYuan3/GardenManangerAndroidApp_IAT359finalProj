@@ -19,6 +19,7 @@
             android:gravity="center"
             android:padding="20dp"
             android:text="Settings"
+            android:textColor="#000000"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -34,11 +35,27 @@
                 android:text="Night Mode: " />
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/interfaceColourTextView"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Interface Colour: " />
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/interfaceColourTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="Interface Colour: "
+                android:textColor="#000000" />
+
+            <Button
+                android:id="@+id/submitColour"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:onClick="prefs"
+                android:text="Confirm" />
+        </LinearLayout>
 
         <RadioGroup
             android:id="@+id/interfaceColourRadioGroup"
@@ -83,13 +100,6 @@
                 android:text="Orange" />
 
         </RadioGroup>
-
-        <Button
-            android:id="@+id/submitColour"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="prefs"
-            android:text="Button" />
 
     </LinearLayout>
 

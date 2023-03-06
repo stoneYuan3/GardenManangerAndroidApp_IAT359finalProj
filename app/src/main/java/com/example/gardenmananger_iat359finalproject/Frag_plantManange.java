@@ -2,6 +2,7 @@ package com.example.gardenmananger_iat359finalproject;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -27,6 +28,9 @@ public class Frag_plantManange extends Fragment implements View.OnClickListener 
     Button button_addPlant;
     Context context;
 
+    public String interfaceColour;
+
+    private TextView yourPlantsTextView;
     private RecyclerView masterRecycler;
     private PlantsInfoShow_recycler plantInfoShowRecycler;
     private LinearLayoutManager layoutManager;
@@ -61,6 +65,12 @@ public class Frag_plantManange extends Fragment implements View.OnClickListener 
         // use a linear layout manager
         layoutManager = new LinearLayoutManager(context);
         masterRecycler.setLayoutManager(layoutManager);
+
+        yourPlantsTextView = view.findViewById(R.id.yourPlantsTextView);
+
+        if (interfaceColour != null) {
+            yourPlantsTextView.setBackgroundColor(Color.parseColor(interfaceColour));
+        }
 
         return view;
     }
