@@ -35,7 +35,7 @@ public class Activity_main_plantManangement extends AppCompatActivity implements
     plantDatabase database;
     MyHelper helper;
 
-    public static final String DEFAULT = "not available";
+    public static final String DEFAULT = "#FFFFFF";
 
 
     @Override
