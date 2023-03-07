@@ -42,8 +42,8 @@ public class Frag_records extends Fragment implements View.OnClickListener {
             settingsTextView.setBackgroundColor(Color.parseColor(interfaceColour));
         }
 
-        return view;
-    }
+//        return view;
+//    }
         recordsRecycler = (RecyclerView) view.findViewById(R.id.recordsRecycler);
         PlantsRecord_recycler = new plantsRecord_recycler(list_plantRecords);
         list_plantRecords.add("Tomato");
