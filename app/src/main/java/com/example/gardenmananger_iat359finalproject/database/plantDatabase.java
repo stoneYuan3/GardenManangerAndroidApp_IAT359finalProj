@@ -102,7 +102,7 @@ private final MyHelper helper;
     public String getSelectedData(String type)
     {
         SQLiteDatabase database = helper.getWritableDatabase();
-        String[] columns = {Constants.NAME};
+        String[] columns = {Constants.NAME, Constants.SUNLIGHT, Constants.TEMPERATURE, Constants.MOIST, Constants.PH};
 
         Cursor cursor = database.query(Constants.DATABASE_NAME, columns, null, null, null, null, null);
 
@@ -110,8 +110,16 @@ private final MyHelper helper;
         while (cursor.moveToNext()) {
 
             int index1 = cursor.getColumnIndex(Constants.NAME);
+            int index2 = cursor.getColumnIndex(Constants.SUNLIGHT);
+            int index3 = cursor.getColumnIndex(Constants.TEMPERATURE);
+            int index4 = cursor.getColumnIndex(Constants.MOIST);
+            int index5 = cursor.getColumnIndex(Constants.PH);
             String plantName = cursor.getString(index1);
-            buffer.append(plantName + "\n");
+            String plantSunlight = cursor.getString(index2);
+            String plantTemperature = cursor.getString(index3);
+            String plantMoist = cursor.getString(index4);
+            String plantPh = cursor.getString(index5);
+            buffer.append(plantName + "," + plantSunlight + "," + plantTemperature + plantMoist + plantPh + "\n");
         }
         return buffer.toString();
     }

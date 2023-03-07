@@ -70,12 +70,30 @@ public class Activity_addPlants extends AppCompatActivity {
             addPlantsTextView.setBackgroundColor(Color.parseColor(interfaceColour));
         }
     }
-
     public void getSelected(View v){
         list_selectedPlant=plantInfoAddRecycler.getSelectedList();
         for(int i=0;i<list_selectedPlant.size();i++){
             Log.d("selectedList",String.valueOf(list_selectedPlant.get(i)));
         }
+
+
+        String name = PlantsInfo.name;
+        String sunlight = PlantsInfo.name;
+        String temperature = PlantsInfo.name;
+        String moist = PlantsInfo.name;
+        String ph = PlantsInfo.name;
+
+        Toast.makeText(this, name + sunlight + temperature + moist + ph, Toast.LENGTH_SHORT).show();
+        long id = database.insertData(name, sunlight, temperature, moist, ph);
+        if (id < 0)
+        {
+            Toast.makeText(this, "fail", Toast.LENGTH_SHORT).show();
+        }
+        else
+        {
+            Toast.makeText(this, "success", Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     public void insertPlants(View v){

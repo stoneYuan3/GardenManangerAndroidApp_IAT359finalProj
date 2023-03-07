@@ -28,4 +28,9 @@ public class Activity_addRecord extends AppCompatActivity {
             settingsTextView.setBackgroundColor(Color.parseColor(interfaceColour));
         }
     }
+
+    public void submit() {
+        //When click submit, an entry should be added to the list, which is displayed as recycler in the other activity
+    }
+
 }
