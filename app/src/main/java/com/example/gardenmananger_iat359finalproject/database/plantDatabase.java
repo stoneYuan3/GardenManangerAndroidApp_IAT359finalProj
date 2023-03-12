@@ -39,6 +39,7 @@ private final MyHelper helper;
         database = helper.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
 
+        //0 is name, 1 is amount, 2 is start date, 3 is end date, 4 is photo link
         contentValues.put(Constants.HARVEST_PLANT, (String) dataArr.get(0));
         contentValues.put(Constants.HARVEST_AMOUNT, (String) dataArr.get(1));
         contentValues.put(Constants.HARVEST_STARTDATE, (String) dataArr.get(2));
@@ -69,7 +70,9 @@ private final MyHelper helper;
     public ArrayList prepareHarvestInfo(){
         SQLiteDatabase db = helper.getWritableDatabase();
 
+        //this function is NOT pulling photo data for now since it is just a placeholder
         //remember to add photo in after the camera function is done
+
         String[] columns = {Constants.UID_RECORD, Constants.HARVEST_PLANT, Constants.HARVEST_AMOUNT,Constants.HARVEST_STARTDATE,
                 Constants.HARVEST_HARVEST_DATE};
 

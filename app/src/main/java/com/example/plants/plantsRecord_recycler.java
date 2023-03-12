@@ -45,6 +45,8 @@ public class plantsRecord_recycler extends RecyclerView.Adapter<plantsRecord_rec
         holder.recordStartDate.setText(harvestStartDate);
         holder.recordHarvestDate.setText(harvestEndDate);
 
+        //again, remember to put photo in
+
     }
 
     @Override
@@ -62,6 +64,8 @@ public class plantsRecord_recycler extends RecyclerView.Adapter<plantsRecord_rec
             recordAmount=(TextView) itemView.findViewById(R.id.recordAmount);
             recordStartDate=(TextView) itemView.findViewById(R.id.recordStartDate);
             recordHarvestDate=(TextView) itemView.findViewById(R.id.recordHarvestDate);
+
+            //again, remember to put photo in
 
             titleEditText=(EditText) itemView.findViewById(R.id.input_rec_plantName);
         }

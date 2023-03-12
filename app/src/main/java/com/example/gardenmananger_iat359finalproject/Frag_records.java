@@ -49,8 +49,12 @@ public class Frag_records extends Fragment implements View.OnClickListener {
 
         database = new plantDatabase(context);
         helper=new MyHelper(context);
+
+        //pull data from database and store in an arraylist. check plantDatabase for detail.
         ArrayList list_plantRecords=database.prepareHarvestInfo();
 
+        //assign data to recycler view, check plantsRecord_recycler for detail
+        //again, this recycler view layout does not include photo yet. remember to add it in when implementing the photo feature.
         recordsRecycler = (RecyclerView) view.findViewById(R.id.recordsRecycler);
         PlantsRecord_recycler = new plantsRecord_recycler(list_plantRecords);
 
