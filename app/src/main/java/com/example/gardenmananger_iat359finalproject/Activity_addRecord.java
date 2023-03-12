@@ -3,26 +3,36 @@ package com.example.gardenmananger_iat359finalproject;
 import static com.example.gardenmananger_iat359finalproject.Activity_main_plantManangement.DEFAULT;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.camera.lifecycle.ProcessCameraProvider;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.gardenmananger_iat359finalproject.database.MyHelper;
 import com.example.gardenmananger_iat359finalproject.database.plantDatabase;
+import com.google.common.util.concurrent.ListenableFuture;
 
 import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 
-public class Activity_addRecord extends AppCompatActivity implements TextWatcher {
+public class Activity_addRecord extends AppCompatActivity implements TextWatcher, View.OnClickListener {
 
     public String interfaceColour;
 
@@ -32,8 +42,15 @@ public class Activity_addRecord extends AppCompatActivity implements TextWatcher
 
     plantDatabase database;
     MyHelper helper;
-
     private ArrayList list_harvestInfo = new ArrayList();
+
+    private Button cameraBtn;
+    private static final int imageId = 1;
+    private ImageView capturedImg;
+
+    //camera function permissions
+    private final String[] PERMISSIONS_CAMERA = new String[]{"android.permission.CAMERA"};
+    private int REQUEST_CODE_PERMISSIONS = 1001;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +60,9 @@ public class Activity_addRecord extends AppCompatActivity implements TextWatcher
         helper=new MyHelper(this);
 
         settingsTextView = findViewById(R.id.settingsTextView);
+        cameraBtn = findViewById(R.id.coverButton);
+        capturedImg = findViewById(R.id.imageViewCamera);
+        cameraBtn.setOnClickListener(this);
 
         input_rec_plantName=findViewById(R.id.input_rec_plantName);
         input_rec_amount=findViewById(R.id.input_rec_amount);
@@ -54,6 +74,9 @@ public class Activity_addRecord extends AppCompatActivity implements TextWatcher
         if (interfaceColour != null) {
             settingsTextView.setBackgroundColor(Color.parseColor(interfaceColour));
         }
+
+        //ask for users permission to use device camera
+        ActivityCompat.requestPermissions(this, PERMISSIONS_CAMERA, REQUEST_CODE_PERMISSIONS);
     }
 
     //when the submit button is clicked, insert data to database
@@ -95,6 +118,17 @@ public class Activity_addRecord extends AppCompatActivity implements TextWatcher
         }
     }
 
+    @Override
+    public void onClick(View v) {
+        Intent intentCamera = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        startActivityForResult(intentCamera, imageId);
+    }
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        Bitmap image = (Bitmap) data.getExtras().get("data");
+        capturedImg.setImageBitmap(image);
+    }
     @Override
     public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
