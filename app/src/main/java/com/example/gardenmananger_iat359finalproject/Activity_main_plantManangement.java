@@ -81,7 +81,7 @@ public class Activity_main_plantManangement extends AppCompatActivity implements
 
         database = new plantDatabase(this);
         helper=new MyHelper(this);
-        ArrayList arr=database.PreparePresetPlantData("preset");
+        ArrayList arr=database.preparePresetPlantData("preset");
         //this for loop is for testing purposes only
         for(int i=0;i<arr.size();i++){
             String[] plantDataEach= (String[]) arr.get(i);

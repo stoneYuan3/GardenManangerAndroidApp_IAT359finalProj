@@ -51,8 +51,8 @@ public class Activity_addPlants extends AppCompatActivity {
 
         database = new plantDatabase(this);
         helper=new MyHelper(this);
-        ArrayList list_presetPlants=database.PreparePresetPlantData("preset");
-        ArrayList list_userPlants=database.PreparePresetPlantData("user");
+        ArrayList list_presetPlants=database.preparePresetPlantData("preset");
+        ArrayList list_userPlants=database.preparePresetPlantData("user");
 
         masterRecycler=findViewById(R.id.list_plantAdd);
         plantInfoAddRecycler = new PlantsInfoAdd_recycler(list_presetPlants,list_userPlants);
@@ -76,33 +76,12 @@ public class Activity_addPlants extends AppCompatActivity {
             Log.d("selectedList",String.valueOf(list_selectedPlant.get(i)));
         }
 
-
-//        String name = PlantsInfo.name;
-//        String sunlight = PlantsInfo.name;
-//        String temperature = PlantsInfo.name;
-//        String moist = PlantsInfo.name;
-//        String ph = PlantsInfo.name;
-
-//        Toast.makeText(this, name + sunlight + temperature + moist + ph, Toast.LENGTH_SHORT).show();
-//        long id = database.insertData(name, sunlight, temperature, moist, ph);
-//        if (id < 0)
-//        {
-//            Toast.makeText(this, "fail", Toast.LENGTH_SHORT).show();
-//        }
-//        else
-//        {
-//            Toast.makeText(this, "success", Toast.LENGTH_SHORT).show();
-//        }
-//
     }
 
     public void insertPlants(View v){
         list_selectedPlant=plantInfoAddRecycler.getSelectedList();
         list_removePlant=plantInfoAddRecycler.getRemoveList();
 
-//        for(int i=0;i<list_selectedPlant.size();i++){
-//            Log.d("selectedList",String.valueOf(list_selectedPlant.get(i)));
-//        }
         boolean addInfo=false, removeInfo=false;
         for(int i=0;i<list_selectedPlant.size();i++){
             String[] plantDataEach= (String[]) list_selectedPlant.get(i);

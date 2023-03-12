@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class plantDatabase {
@@ -33,11 +34,25 @@ private final MyHelper helper;
         long id = database.insert(Constants.TABLE_USERADD_PLANTS_NAME, null, contentValues);
         return id;
     }
+    public long insertHarvestRecord (ArrayList dataArr)
+    {
+        database = helper.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put(Constants.HARVEST_PLANT, (String) dataArr.get(0));
+        contentValues.put(Constants.HARVEST_AMOUNT, (String) dataArr.get(1));
+        contentValues.put(Constants.HARVEST_STARTDATE, (String) dataArr.get(2));
+        contentValues.put(Constants.HARVEST_HARVEST_DATE, (String) dataArr.get(3));
+        contentValues.put(Constants.HARVEST_PHOTO, (String) dataArr.get(4));
+
+        long id = database.insert(Constants.TABLE_HARVEST_RECORD_NAME, null, contentValues);
+        return id;
+    }
+
     public void deleteUserPlantsByName(String name) {
         database = helper.getWritableDatabase();
         database.execSQL("DELETE FROM " + Constants.TABLE_USERADD_PLANTS_NAME
                 + " WHERE " + Constants.NAME + " = '" + name + "'");
-//        return id;
     }
 
     public Cursor getPresetPlantData()
@@ -51,9 +66,42 @@ private final MyHelper helper;
     }
 
 
+    public ArrayList prepareHarvestInfo(){
+        SQLiteDatabase db = helper.getWritableDatabase();
+
+        //remember to add photo in after the camera function is done
+        String[] columns = {Constants.UID_RECORD, Constants.HARVEST_PLANT, Constants.HARVEST_AMOUNT,Constants.HARVEST_STARTDATE,
+                Constants.HARVEST_HARVEST_DATE};
+
+        Cursor cursor;
+        cursor = db.query(Constants.TABLE_HARVEST_RECORD_NAME, columns, null, null, null, null, null);
+
+        int index1 = cursor.getColumnIndex(Constants.UID_RECORD);
+        int index2 = cursor.getColumnIndex(Constants.HARVEST_PLANT);
+        int index3 = cursor.getColumnIndex(Constants.HARVEST_AMOUNT);
+        int index4 = cursor.getColumnIndex(Constants.HARVEST_STARTDATE);
+        int index5 = cursor.getColumnIndex(Constants.HARVEST_HARVEST_DATE);
+
+        ArrayList mArrayList = new ArrayList();
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            String HarvestTitle = cursor.getString(index2);
+            String HarvestAmount = cursor.getString(index3);
+            String HarvestStartDate = cursor.getString(index4);
+            String HarvestEndDate = cursor.getString(index5);
+
+            String[] plantDataEach={
+                    HarvestTitle,HarvestAmount,HarvestStartDate,HarvestEndDate
+            };
+            mArrayList.add(plantDataEach);
+            cursor.moveToNext();
+        }
+        return mArrayList;
+    }
+
     //pull preset plant data and turn them into an arraylist
     //for the add plants recycler view to generate UI
-    public ArrayList PreparePresetPlantData(String option){
+    public ArrayList preparePresetPlantData(String option){
 
         SQLiteDatabase db = helper.getWritableDatabase();
 

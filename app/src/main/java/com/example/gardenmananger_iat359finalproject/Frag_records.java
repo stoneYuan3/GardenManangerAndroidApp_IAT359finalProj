@@ -15,6 +15,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.gardenmananger_iat359finalproject.database.MyHelper;
+import com.example.gardenmananger_iat359finalproject.database.plantDatabase;
 import com.example.plants.plantsRecord_recycler;
 
 import java.util.ArrayList;
@@ -26,9 +28,12 @@ public class Frag_records extends Fragment implements View.OnClickListener {
     public String interfaceColour;
     private TextView settingsTextView;
     private RecyclerView recordsRecycler;
-    private ArrayList<String> list_plantRecords=new ArrayList<String>();
     private LinearLayoutManager layoutManager;
     private com.example.plants.plantsRecord_recycler PlantsRecord_recycler;
+
+    plantDatabase database;
+    MyHelper helper;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -42,12 +47,12 @@ public class Frag_records extends Fragment implements View.OnClickListener {
             settingsTextView.setBackgroundColor(Color.parseColor(interfaceColour));
         }
 
-//        return view;
-//    }
+        database = new plantDatabase(context);
+        helper=new MyHelper(context);
+        ArrayList list_plantRecords=database.prepareHarvestInfo();
+
         recordsRecycler = (RecyclerView) view.findViewById(R.id.recordsRecycler);
         PlantsRecord_recycler = new plantsRecord_recycler(list_plantRecords);
-        list_plantRecords.add("Tomato");
-        list_plantRecords.add("Potato");
 
         recordsRecycler.setAdapter(PlantsRecord_recycler);
         // use a linear layout manager

@@ -1,14 +1,10 @@
 package com.example.plants;
 
-import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,8 +16,8 @@ import java.util.ArrayList;
 
 public class plantsRecord_recycler extends RecyclerView.Adapter<plantsRecord_recycler.MyViewHolder>{
 
-    private ArrayList<String> list_plantRecord;
-    public plantsRecord_recycler(ArrayList<String> list){
+    private ArrayList list_plantRecord;
+    public plantsRecord_recycler(ArrayList list){
         this.list_plantRecord=list;
     }
 
@@ -37,8 +33,18 @@ public class plantsRecord_recycler extends RecyclerView.Adapter<plantsRecord_rec
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 //        String title = holder.titleEditText.getText().toString();
-        String title=list_plantRecord.get(position);
-        holder.recordName.setText(title);
+        String[] harvestInfoEach = (String[]) list_plantRecord.get(position);
+
+        String harvestTitle=harvestInfoEach[0];
+        String harvestAmount=harvestInfoEach[1];
+        String harvestStartDate=harvestInfoEach[2];
+        String harvestEndDate=harvestInfoEach[3];
+
+        holder.recordName.setText(harvestTitle);
+        holder.recordAmount.setText(harvestAmount);
+        holder.recordStartDate.setText(harvestStartDate);
+        holder.recordHarvestDate.setText(harvestEndDate);
+
     }
 
     @Override
@@ -47,13 +53,17 @@ public class plantsRecord_recycler extends RecyclerView.Adapter<plantsRecord_rec
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        public TextView recordName;
+        public TextView recordName,recordAmount,recordStartDate,recordHarvestDate;
         public EditText titleEditText;
 
         public MyViewHolder(View itemView) {
             super(itemView);
             recordName=(TextView) itemView.findViewById(R.id.recordName);
-            titleEditText=(EditText) itemView.findViewById(R.id.titleEditText);
+            recordAmount=(TextView) itemView.findViewById(R.id.recordAmount);
+            recordStartDate=(TextView) itemView.findViewById(R.id.recordStartDate);
+            recordHarvestDate=(TextView) itemView.findViewById(R.id.recordHarvestDate);
+
+            titleEditText=(EditText) itemView.findViewById(R.id.input_rec_plantName);
         }
 
         @Override

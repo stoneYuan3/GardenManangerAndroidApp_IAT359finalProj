@@ -35,6 +35,15 @@ public class MyHelper extends SQLiteOpenHelper {
                     + Constants.REQ_TEMPERATURE + " TEXT,"
                     + Constants.REQ_SOILPH + " TEXT " +  ");" ;
 
+    private static final String CREATE_TABLE_HARVEST_RECORD =
+            "CREATE TABLE "+
+                    Constants.TABLE_HARVEST_RECORD_NAME + " (" +
+                    Constants.UID_RECORD + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    Constants.HARVEST_PLANT + " TEXT," +
+                    Constants.HARVEST_AMOUNT + " TEXT," +
+                    Constants.HARVEST_STARTDATE + " TEXT," +
+                    Constants.HARVEST_HARVEST_DATE + " TEXT, " + Constants.HARVEST_PHOTO + " TEXT " + ");" ;
+
 //    private static final String INSERT_PRESET_PLANT =
 //            "INSERT INTO" + Constants.TABLE_PRESET_PLANTS_NAME +
 //                    "(" + Constants.ICON + " " + Constants.REQ_SUNLIGHT + " " + Constants.REQ_HUMIDITY
@@ -43,6 +52,7 @@ public class MyHelper extends SQLiteOpenHelper {
 
     private static final String DROP_PRESET_TABLE = "DROP TABLE IF EXISTS " +Constants.TABLE_PRESET_PLANTS_NAME;
     private static final String DROP_USER_TABLE = "DROP TABLE IF EXISTS " +Constants.TABLE_USERADD_PLANTS_NAME;
+    private static final String DROP_HARVEST = "DROP TABLE IF EXISTS " +Constants.TABLE_HARVEST_RECORD_NAME;
 
     public MyHelper(Context context){
         super (context, Constants.DATABASE_NAME, null, Constants.DATABASE_VERSION);
@@ -54,6 +64,7 @@ public class MyHelper extends SQLiteOpenHelper {
         try {
             db.execSQL(CREATE_TABLE_PRESET_PLANTS);
             db.execSQL(CREATE_TABLE_USERADD_PLANTS);
+            db.execSQL(CREATE_TABLE_HARVEST_RECORD);
 
             for(int i=0;i<presetPlants.length; i++){
                 String[] plantEach=presetPlants[i];
@@ -90,6 +101,7 @@ public class MyHelper extends SQLiteOpenHelper {
         try {
             database.execSQL(DROP_PRESET_TABLE);
             database.execSQL(DROP_USER_TABLE);
+            database.execSQL(DROP_HARVEST);
             onCreate(database);
             Toast.makeText(context, "onUpgrade called", Toast.LENGTH_SHORT).show();
         } catch (SQLException e) {
