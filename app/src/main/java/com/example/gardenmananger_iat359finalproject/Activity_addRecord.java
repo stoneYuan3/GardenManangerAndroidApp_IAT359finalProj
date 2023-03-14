@@ -3,7 +3,7 @@ package com.example.gardenmananger_iat359finalproject;
 import static com.example.gardenmananger_iat359finalproject.Activity_main_plantManangement.DEFAULT;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.camera.lifecycle.ProcessCameraProvider;
+//import androidx.camera.lifecycle.ProcessCameraProvider;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
@@ -27,7 +27,7 @@ import android.widget.Toast;
 
 import com.example.gardenmananger_iat359finalproject.database.MyHelper;
 import com.example.gardenmananger_iat359finalproject.database.plantDatabase;
-import com.google.common.util.concurrent.ListenableFuture;
+//import com.google.common.util.concurrent.ListenableFuture;
 
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
