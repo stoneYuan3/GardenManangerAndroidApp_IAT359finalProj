@@ -70,41 +70,41 @@
             android:layout_marginRight="15sp">
 
             <RadioButton
-                android:id="@+id/redRB"
+                android:id="@+id/whiteRB"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Red" />
+                android:layout_weight="1"
+                android:text="Cloudy White" />
+
+            <RadioButton
+                android:id="@+id/pinkRB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Royal Pink" />
 
             <RadioButton
                 android:id="@+id/blueRB"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Blue" />
+                android:text="Winter Blue" />
 
             <RadioButton
                 android:id="@+id/greenRB"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Green" />
+                android:text="Garden Green" />
 
             <RadioButton
                 android:id="@+id/yellowRB"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Yellow" />
-
-            <RadioButton
-                android:id="@+id/purpleRB"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Purple" />
+                android:text="Spring Time Yellow" />
 
             <RadioButton
                 android:id="@+id/orangeRB"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Orange" />
+                android:text="Autumn Orange" />
 
         </RadioGroup>
 

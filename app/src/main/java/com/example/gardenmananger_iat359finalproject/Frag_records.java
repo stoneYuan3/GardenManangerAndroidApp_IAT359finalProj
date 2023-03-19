@@ -45,6 +45,7 @@ public class Frag_records extends Fragment implements View.OnClickListener {
 
         if (interfaceColour != null) {
             settingsTextView.setBackgroundColor(Color.parseColor(interfaceColour));
+            addRecordButton.setBackgroundColor(Color.parseColor(interfaceColour));
         }
 
         database = new plantDatabase(context);

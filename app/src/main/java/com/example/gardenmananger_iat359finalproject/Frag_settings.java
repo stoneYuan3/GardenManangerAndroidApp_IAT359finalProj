@@ -9,12 +9,9 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.Switch;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 public class Frag_settings extends Fragment implements RadioGroup.OnCheckedChangeListener {
@@ -45,23 +42,23 @@ public class Frag_settings extends Fragment implements RadioGroup.OnCheckedChang
     @Override
     public void onCheckedChanged(RadioGroup group, int i) {
         switch(i) {
-            case R.id.greenRB:
-                id = "74C161";
+            case R.id.whiteRB:
+                id = "F1F1F1";
+                break;
+            case R.id.pinkRB:
+                id = "F5B6FF";
                 break;
             case R.id.blueRB:
-                id = "738ADE";
+                id = "7799F1";
                 break;
-            case R.id.redRB:
-                id = "C63F3F";
+            case R.id.greenRB:
+                id = "32772C";
                 break;
             case R.id.yellowRB:
-                id = "EDE27D";
+                id = "FFFB9D";
                 break;
             case R.id.orangeRB:
-                id = "E48956";
-                break;
-            case R.id.purpleRB:
-                id = "9B5DD9";
+                id = "E78A56";
                 break;
         }
     }
