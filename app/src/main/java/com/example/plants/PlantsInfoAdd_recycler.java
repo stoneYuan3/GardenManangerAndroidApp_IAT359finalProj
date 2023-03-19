@@ -22,16 +22,19 @@ import java.util.ArrayList;
 public class PlantsInfoAdd_recycler extends RecyclerView.Adapter<PlantsInfoAdd_recycler.PlantInfoAddView>{
 
 //    private String title;
-    private ArrayList list_plant,list_userPlant;
+    private ArrayList list_plant,list_customPlant,list_userPlant;
 
     protected static ArrayList list_selectedPlant;
 
     //list used to identify which item should be added or removed from the database
     protected static ArrayList list_addPlantList,list_removePlantList;
 
-    public PlantsInfoAdd_recycler(ArrayList<String> list_preset,ArrayList<String> list_user){
+    public PlantsInfoAdd_recycler(ArrayList<String> list_preset,ArrayList<String> list_custom,ArrayList<String> list_user){
         this.list_plant=list_preset;
         this.list_userPlant=list_user;
+        this.list_customPlant=list_custom;
+
+        list_plant.addAll(list_customPlant);
 
         for(int i=0;i<list_userPlant.size();i++){
             String[] dataEach= (String[]) list_userPlant.get(i);

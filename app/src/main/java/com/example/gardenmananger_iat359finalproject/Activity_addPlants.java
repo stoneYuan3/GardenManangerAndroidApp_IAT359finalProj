@@ -29,7 +29,7 @@ import java.util.ArrayList;
 public class Activity_addPlants extends AppCompatActivity {
 
     public String interfaceColour;
-    private RecyclerView masterRecycler,recy_customPlants;
+    private RecyclerView masterRecycler;
     private PlantsInfoAdd_recycler plantInfoAddRecycler,customPresetAddRecycler;
     private LinearLayoutManager layoutManager,layoutManagerCustomPreset;
 
@@ -57,18 +57,14 @@ public class Activity_addPlants extends AppCompatActivity {
         ArrayList list_userPlants=database.preparePresetPlantData("user");
 
         masterRecycler=findViewById(R.id.list_plantAdd);
-        recy_customPlants = findViewById(R.id.list_customPlants);
 
-        plantInfoAddRecycler = new PlantsInfoAdd_recycler(list_presetPlants,list_userPlants);
-        customPresetAddRecycler = new PlantsInfoAdd_recycler(list_customPlants,list_userPlants);
+        plantInfoAddRecycler = new PlantsInfoAdd_recycler(list_presetPlants,list_customPlants,list_userPlants);
 
         masterRecycler.setAdapter(plantInfoAddRecycler);
-        recy_customPlants.setAdapter(customPresetAddRecycler);
         // use a linear layout manager
         layoutManager = new LinearLayoutManager(this);
         layoutManagerCustomPreset = new LinearLayoutManager(this);
         masterRecycler.setLayoutManager(layoutManager);
-        recy_customPlants.setLayoutManager(layoutManagerCustomPreset);
 
         addPlantsTextView = findViewById(R.id.addPlantsTextView);
 
