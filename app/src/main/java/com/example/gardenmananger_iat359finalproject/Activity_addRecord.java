@@ -5,12 +5,10 @@ import static com.example.gardenmananger_iat359finalproject.Activity_main_plantM
 import androidx.appcompat.app.AppCompatActivity;
 //import androidx.camera.lifecycle.ProcessCameraProvider;
 import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -30,13 +28,12 @@ import com.example.gardenmananger_iat359finalproject.database.plantDatabase;
 //import com.google.common.util.concurrent.ListenableFuture;
 
 import java.util.ArrayList;
-import java.util.concurrent.ExecutionException;
 
 public class Activity_addRecord extends AppCompatActivity implements TextWatcher, View.OnClickListener {
 
     public String interfaceColour;
 
-    private TextView settingsTextView;
+    private TextView recordTextView;
 
     private EditText input_rec_plantName,input_rec_amount,input_rec_dateStart,input_rec_dateEnd;
 
@@ -44,7 +41,7 @@ public class Activity_addRecord extends AppCompatActivity implements TextWatcher
     MyHelper helper;
     private ArrayList list_harvestInfo = new ArrayList();
 
-    private Button cameraBtn;
+    private Button cameraBtn, submitBtn;
     private static final int imageId = 1;
     private ImageView capturedImg;
 
@@ -59,7 +56,8 @@ public class Activity_addRecord extends AppCompatActivity implements TextWatcher
         database = new plantDatabase(this);
         helper=new MyHelper(this);
 
-        settingsTextView = findViewById(R.id.settingsTextView);
+        recordTextView = findViewById(R.id.harvestTextView);
+        submitBtn = findViewById(R.id.submitButton);
         cameraBtn = findViewById(R.id.coverButton);
         capturedImg = findViewById(R.id.imageViewCamera);
         cameraBtn.setOnClickListener(this);
@@ -72,7 +70,9 @@ public class Activity_addRecord extends AppCompatActivity implements TextWatcher
         SharedPreferences preferences = getSharedPreferences("MyData", Context.MODE_PRIVATE);
         interfaceColour = preferences.getString("colourId", DEFAULT);
         if (interfaceColour != null) {
-            settingsTextView.setBackgroundColor(Color.parseColor(interfaceColour));
+            recordTextView.setBackgroundColor(Color.parseColor(interfaceColour));
+            submitBtn.setBackgroundColor(Color.parseColor(interfaceColour));
+            cameraBtn.setBackgroundColor(Color.parseColor(interfaceColour));
         }
 
         //ask for users permission to use device camera

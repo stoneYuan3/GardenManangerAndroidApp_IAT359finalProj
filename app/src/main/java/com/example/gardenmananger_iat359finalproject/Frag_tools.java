@@ -15,21 +15,18 @@ import android.widget.TextView;
 
 public class Frag_tools extends Fragment {
 
-    TextView tool_lightsense;
+    private TextView tool_lightsense;
     Context context;
 
     public String interfaceColour;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-
-        tool_lightsense=container.findViewById(R.id.text_tool_lightsen);
+        View view=inflater.inflate(R.layout.fragment_frag_tools, container, false);
         context=container.getContext();
+        tool_lightsense=container.findViewById(R.id.text_tool_lightsen);
 
-
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_frag_tools, container, false);
+        return view;
     }
 
 

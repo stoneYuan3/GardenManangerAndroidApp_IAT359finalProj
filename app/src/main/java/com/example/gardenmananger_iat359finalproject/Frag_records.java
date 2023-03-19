@@ -1,7 +1,6 @@
 package com.example.gardenmananger_iat359finalproject;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 
@@ -26,7 +25,7 @@ public class Frag_records extends Fragment implements View.OnClickListener {
     Button addRecordButton;
     Context context;
     public String interfaceColour;
-    private TextView settingsTextView;
+    private TextView harvestTextView;
     private RecyclerView recordsRecycler;
     private LinearLayoutManager layoutManager;
     private com.example.plants.plantsRecord_recycler PlantsRecord_recycler;
@@ -41,10 +40,9 @@ public class Frag_records extends Fragment implements View.OnClickListener {
 
         addRecordButton = view.findViewById(R.id.addRecordButton);
         context = container.getContext();
-        settingsTextView = view.findViewById(R.id.settingsTextView);
+        harvestTextView = view.findViewById(R.id.harvestTextView);
 
         if (interfaceColour != null) {
-            settingsTextView.setBackgroundColor(Color.parseColor(interfaceColour));
             addRecordButton.setBackgroundColor(Color.parseColor(interfaceColour));
         }
 

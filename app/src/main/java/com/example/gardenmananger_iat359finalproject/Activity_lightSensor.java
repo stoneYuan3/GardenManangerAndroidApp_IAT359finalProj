@@ -2,8 +2,13 @@ package com.example.gardenmananger_iat359finalproject;
 
 import static android.hardware.Sensor.TYPE_LIGHT;
 
+import static com.example.gardenmananger_iat359finalproject.Activity_main_plantManangement.DEFAULT;
+
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -11,11 +16,14 @@ import android.hardware.SensorManager;
 import android.media.ToneGenerator;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class Activity_lightSensor extends AppCompatActivity implements SensorEventListener {
 
     public String interfaceColour;
+
+    private LinearLayout dataLayout;
     private SensorManager sensorMaster;
     private Sensor sensor_light;
     private TextView text_lightsenData,text_lightClass;
@@ -28,10 +36,18 @@ public class Activity_lightSensor extends AppCompatActivity implements SensorEve
 
         text_lightsenData=findViewById(R.id.text_lightsenData);
         text_lightClass=findViewById(R.id.text_lightClass);
+        dataLayout = findViewById(R.id.dataLayout);
+
+        SharedPreferences preferences = getSharedPreferences("MyData", Context.MODE_PRIVATE);
+        interfaceColour = preferences.getString("colourId", DEFAULT);
 
         sensorMaster=(SensorManager) getSystemService(SENSOR_SERVICE);
         if(sensorMaster.getDefaultSensor(TYPE_LIGHT)!=null){
             sensor_light=sensorMaster.getDefaultSensor(TYPE_LIGHT);
+        }
+
+        if (interfaceColour != null) {
+            dataLayout.setBackgroundColor(Color.parseColor(interfaceColour));
         }
 
     }

@@ -1,9 +1,7 @@
 package com.example.gardenmananger_iat359finalproject;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Color;
-import android.database.Cursor;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -14,14 +12,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.gardenmananger_iat359finalproject.database.MyHelper;
 import com.example.gardenmananger_iat359finalproject.database.plantDatabase;
-import com.example.gardenmananger_iat359finalproject.database.Constants;
-import com.example.gardenmananger_iat359finalproject.database.MyHelper;
-import com.example.gardenmananger_iat359finalproject.database.plantDatabase;
-import com.example.plants.PlantsInfoAdd_recycler;
 import com.example.plants.PlantsInfoShow_recycler;
 
 import java.util.ArrayList;
@@ -30,11 +25,11 @@ import java.util.ArrayList;
 public class Frag_plantManange extends Fragment implements View.OnClickListener {
 
     Button button_addPlant;
+    LinearLayout headerLayout;
     Context context;
 
     public String interfaceColour;
 
-    private TextView yourPlantsTextView;
     private RecyclerView masterRecycler;
     private PlantsInfoShow_recycler plantInfoShowRecycler;
     private LinearLayoutManager layoutManager;
@@ -50,6 +45,7 @@ public class Frag_plantManange extends Fragment implements View.OnClickListener 
         View view=inflater.inflate(R.layout.fragment_frag_plant_manange, container, false);
 
         button_addPlant=view.findViewById(R.id.button_addPlant);
+        headerLayout=view.findViewById(R.id.headerLayout);
 
         context=container.getContext();
         // Inflate the layout for this fragment
@@ -70,10 +66,9 @@ public class Frag_plantManange extends Fragment implements View.OnClickListener 
         layoutManager = new LinearLayoutManager(context);
         masterRecycler.setLayoutManager(layoutManager);
 
-        yourPlantsTextView = view.findViewById(R.id.yourPlantsTextView);
-
         if (interfaceColour != null) {
-            yourPlantsTextView.setBackgroundColor(Color.parseColor(interfaceColour));
+            headerLayout.setBackgroundColor(Color.parseColor(interfaceColour));
+            button_addPlant.setBackgroundColor(Color.parseColor(interfaceColour));
         }
 
         return view;

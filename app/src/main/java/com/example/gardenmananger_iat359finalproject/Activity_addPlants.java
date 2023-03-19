@@ -36,18 +36,22 @@ public class Activity_addPlants extends AppCompatActivity {
     private ArrayList<String> list_plantAdd=new ArrayList<String>();
     private ArrayList list_selectedPlant,list_removePlant;
 
-    private Button button_confirm;
+    private Button button_confirm, button_discard, button_addCustom;
+
+    private TextView addPlantTextView;
 
     plantDatabase database;
     MyHelper helper;
 
-    private TextView addPlantsTextView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_plants);
+        addPlantTextView=findViewById(R.id.harvestTextView);
 
         button_confirm=findViewById(R.id.button_confirm);
+        button_discard=findViewById(R.id.button_discard);
+        button_addCustom=findViewById(R.id.b_addnewCustomPreset);
 
         database = new plantDatabase(this);
         helper=new MyHelper(this);
@@ -66,12 +70,14 @@ public class Activity_addPlants extends AppCompatActivity {
         layoutManagerCustomPreset = new LinearLayoutManager(this);
         masterRecycler.setLayoutManager(layoutManager);
 
-        addPlantsTextView = findViewById(R.id.addPlantsTextView);
 
         SharedPreferences preferences = getSharedPreferences("MyData", Context.MODE_PRIVATE);
         interfaceColour = preferences.getString("colourId", DEFAULT);
         if (interfaceColour != null) {
-            addPlantsTextView.setBackgroundColor(Color.parseColor(interfaceColour));
+            addPlantTextView.setBackgroundColor(Color.parseColor(interfaceColour));
+            button_addCustom.setBackgroundColor(Color.parseColor(interfaceColour));
+            button_confirm.setBackgroundColor(Color.parseColor(interfaceColour));
+            button_discard.setBackgroundColor(Color.parseColor(interfaceColour));
         }
     }
     public void getSelected(View v){
