@@ -35,6 +35,15 @@ public class MyHelper extends SQLiteOpenHelper {
                     + Constants.REQ_TEMPERATURE + " TEXT,"
                     + Constants.REQ_SOILPH + " TEXT " +  ");" ;
 
+    private static final String CREATE_TABLE_CUSTOM_PRESET_PLANTS =
+            "CREATE TABLE "+
+                    Constants.TABLE_CUSTOM_PRESET_PLANTS + " (" +
+                    Constants.UID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    Constants.NAME + " TEXT," + Constants.ICON + " TEXT," +
+                    Constants.REQ_SUNLIGHT + " TEXT," + Constants.REQ_HUMIDITY + " TEXT,"
+                    + Constants.REQ_TEMPERATURE + " TEXT,"
+                    + Constants.REQ_SOILPH + " TEXT " +  ");" ;
+
     private static final String CREATE_TABLE_HARVEST_RECORD =
             "CREATE TABLE "+
                     Constants.TABLE_HARVEST_RECORD_NAME + " (" +
@@ -64,6 +73,7 @@ public class MyHelper extends SQLiteOpenHelper {
         try {
             db.execSQL(CREATE_TABLE_PRESET_PLANTS);
             db.execSQL(CREATE_TABLE_USERADD_PLANTS);
+            db.execSQL(CREATE_TABLE_CUSTOM_PRESET_PLANTS);
             db.execSQL(CREATE_TABLE_HARVEST_RECORD);
 
             for(int i=0;i<presetPlants.length; i++){

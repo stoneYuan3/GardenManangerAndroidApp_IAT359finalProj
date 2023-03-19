@@ -26,8 +26,8 @@ public class PlantsInfoAdd_recycler extends RecyclerView.Adapter<PlantsInfoAdd_r
 
     protected static ArrayList list_selectedPlant;
 
+    //list used to identify which item should be added or removed from the database
     protected static ArrayList list_addPlantList,list_removePlantList;
-
 
     public PlantsInfoAdd_recycler(ArrayList<String> list_preset,ArrayList<String> list_user){
         this.list_plant=list_preset;
@@ -113,6 +113,11 @@ public class PlantsInfoAdd_recycler extends RecyclerView.Adapter<PlantsInfoAdd_r
     }
     public ArrayList getRemoveList(){
         return list_removePlantList;
+    }
+
+    public void clearList(){
+        list_selectedPlant.clear();
+        list_removePlantList.clear();
     }
 
     public static class PlantInfoAddView extends RecyclerView.ViewHolder implements View.OnClickListener{

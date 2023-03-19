@@ -29,9 +29,9 @@ import java.util.ArrayList;
 public class Activity_addPlants extends AppCompatActivity {
 
     public String interfaceColour;
-    private RecyclerView masterRecycler;
-    private PlantsInfoAdd_recycler plantInfoAddRecycler;
-    private LinearLayoutManager layoutManager;
+    private RecyclerView masterRecycler,recy_customPlants;
+    private PlantsInfoAdd_recycler plantInfoAddRecycler,customPresetAddRecycler;
+    private LinearLayoutManager layoutManager,layoutManagerCustomPreset;
 
     private ArrayList<String> list_plantAdd=new ArrayList<String>();
     private ArrayList list_selectedPlant,list_removePlant;
@@ -52,15 +52,23 @@ public class Activity_addPlants extends AppCompatActivity {
         database = new plantDatabase(this);
         helper=new MyHelper(this);
         ArrayList list_presetPlants=database.preparePresetPlantData("preset");
+        ArrayList list_customPlants=database.preparePresetPlantData("userPreset");
+
         ArrayList list_userPlants=database.preparePresetPlantData("user");
 
         masterRecycler=findViewById(R.id.list_plantAdd);
+        recy_customPlants = findViewById(R.id.list_customPlants);
+
         plantInfoAddRecycler = new PlantsInfoAdd_recycler(list_presetPlants,list_userPlants);
+        customPresetAddRecycler = new PlantsInfoAdd_recycler(list_customPlants,list_userPlants);
 
         masterRecycler.setAdapter(plantInfoAddRecycler);
+        recy_customPlants.setAdapter(customPresetAddRecycler);
         // use a linear layout manager
         layoutManager = new LinearLayoutManager(this);
+        layoutManagerCustomPreset = new LinearLayoutManager(this);
         masterRecycler.setLayoutManager(layoutManager);
+        recy_customPlants.setLayoutManager(layoutManagerCustomPreset);
 
         addPlantsTextView = findViewById(R.id.addPlantsTextView);
 
@@ -75,7 +83,11 @@ public class Activity_addPlants extends AppCompatActivity {
         for(int i=0;i<list_selectedPlant.size();i++){
             Log.d("selectedList",String.valueOf(list_selectedPlant.get(i)));
         }
+    }
 
+    public void addNewPresetIntent(View v){
+        Intent intent=new Intent(this,Activity_addCustomPlantTemp.class);
+        startActivity(intent);
     }
 
     public void insertPlants(View v){
@@ -132,7 +144,11 @@ public class Activity_addPlants extends AppCompatActivity {
                 startActivity(intent);
             }
         }
+    }
 
-
+    public void cancel(View v){
+        plantInfoAddRecycler.clearList();
+        Intent intent=new Intent(this,Activity_main_plantManangement.class);
+        startActivity(intent);
     }
 }

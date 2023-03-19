@@ -4,6 +4,7 @@ public class Constants {
     public static final String DATABASE_NAME = "plantdatabase";
     public static final String TABLE_PRESET_PLANTS_NAME = "presetPlants";
     public static final String TABLE_USERADD_PLANTS_NAME = "userAddedPlants";
+    public static final String TABLE_CUSTOM_PRESET_PLANTS = "userCustomPresetPlants";
 
     public static final String UID = "_id";
     public static final String NAME = "Name";
@@ -24,6 +25,6 @@ public class Constants {
     public static final String HARVEST_PHOTO = "photo";
 
 
-    public static final int DATABASE_VERSION = 15;
+    public static final int DATABASE_VERSION = 16;
 
 }

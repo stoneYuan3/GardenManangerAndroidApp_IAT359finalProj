@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-feature android:name="android.hardware.camera.any" />
+
     <uses-permission android:name="android.permission.CAMERA" />
 
     <application
@@ -15,7 +16,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GardenMananger_IAT359FinalProject"
         tools:targetApi="31">
-
+        <activity
+            android:name=".Activity_addCustomPlantTemp"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
         <activity
             android:name=".Activity_addRecord"
             android:exported="false" />
@@ -26,7 +33,6 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
         <activity
             android:name=".Activity_lightSensor"
             android:exported="false">

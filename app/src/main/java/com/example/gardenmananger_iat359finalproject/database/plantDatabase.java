@@ -50,6 +50,28 @@ private final MyHelper helper;
         return id;
     }
 
+    public long insertUserCustomPreset (ArrayList dataArr){
+        database = helper.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+
+        for(int i=0;i<dataArr.size();i++){
+            if(dataArr.get(i).equals("")){
+                dataArr.set(i,"not defined");
+            }
+        }
+        //0 is name, 1 is sun, 2 is humid, 3 is temperature, 4 is ph
+        contentValues.put(Constants.NAME, (String) dataArr.get(0));
+        //generic icon for all custom plants
+        contentValues.put(Constants.ICON,"@drawable/ic_baseline_local_florist_96");
+        contentValues.put(Constants.REQ_SUNLIGHT, (String) dataArr.get(1));
+        contentValues.put(Constants.REQ_HUMIDITY, (String) dataArr.get(2));
+        contentValues.put(Constants.REQ_TEMPERATURE, (String) dataArr.get(3));
+        contentValues.put(Constants.REQ_SOILPH, (String) dataArr.get(4));
+
+        long id = database.insert(Constants.TABLE_CUSTOM_PRESET_PLANTS, null, contentValues);
+        return id;
+    }
+
     public void deleteUserPlantsByName(String name) {
         database = helper.getWritableDatabase();
         database.execSQL("DELETE FROM " + Constants.TABLE_USERADD_PLANTS_NAME
@@ -103,7 +125,7 @@ private final MyHelper helper;
     }
 
     //pull preset plant data and turn them into an arraylist
-    //for the add plants recycler view to generate UI
+    //for the add plants recycler view to generate the list of plant data
     public ArrayList preparePresetPlantData(String option){
 
         SQLiteDatabase db = helper.getWritableDatabase();
@@ -115,6 +137,9 @@ private final MyHelper helper;
         switch (option){
             case "user":
                 cursor = db.query(Constants.TABLE_USERADD_PLANTS_NAME, columns, null, null, null, null, null);
+                break;
+            case "userPreset":
+                cursor = db.query(Constants.TABLE_CUSTOM_PRESET_PLANTS, columns, null, null, null, null, null);
                 break;
             default:
                 cursor = db.query(Constants.TABLE_PRESET_PLANTS_NAME, columns, null, null, null, null, null);
