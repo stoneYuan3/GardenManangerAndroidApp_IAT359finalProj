@@ -47,7 +47,7 @@ public class Activity_main_plantManangement extends AppCompatActivity implements
 
         //set layout to plant manangement layout by default
         getSupportFragmentManager().beginTransaction().replace(R.id.layout_main,fragPlantManange).commit();
-
+        nav_bottom.setSelectedItemId(R.id.button_nav_plants);
 
             SharedPreferences preferences = getSharedPreferences("MyData", Context.MODE_PRIVATE);
             if (preferences.getString("colourId", DEFAULT) != null) {
