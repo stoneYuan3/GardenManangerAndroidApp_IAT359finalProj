@@ -64,7 +64,7 @@ public class Activity_addCustomPlantTemp extends AppCompatActivity {
         {
             Toast.makeText(this, "success", Toast.LENGTH_SHORT).show();
             Log.d("insert","confirm add info successful");
-            Intent intent=new Intent(this,Activity_main_plantManangement.class);
+            Intent intent=new Intent(this,Activity_addPlants.class);
             startActivity(intent);
         }
     }
