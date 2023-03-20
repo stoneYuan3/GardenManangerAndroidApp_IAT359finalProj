@@ -48,25 +48,31 @@ public class Activity_addCustomPlantTemp extends AppCompatActivity {
         String temperature = String.valueOf(input_temperature.getText());
         String ph = String.valueOf(input_ph.getText());
 
-        list_customPlant.add(plantName);
-        list_customPlant.add(sunlight);
-        list_customPlant.add(humid);
-        list_customPlant.add(temperature);
-        list_customPlant.add(ph);
+        if(plantName!=null){
+            list_customPlant.add(plantName);
+            list_customPlant.add(sunlight);
+            list_customPlant.add(humid);
+            list_customPlant.add(temperature);
+            list_customPlant.add(ph);
 
-        long id = database.insertUserCustomPreset(list_customPlant);
-        if (id < 0)
-        {
-            Toast.makeText(this, "fail", Toast.LENGTH_SHORT).show();
-            Log.d("insert","confirm add info fail");
+            long id = database.insertUserCustomPreset(list_customPlant);
+            if (id < 0)
+            {
+                Toast.makeText(this, "fail", Toast.LENGTH_SHORT).show();
+                Log.d("insert","confirm add info fail");
+            }
+            else
+            {
+                Toast.makeText(this, "success", Toast.LENGTH_SHORT).show();
+                Log.d("insert","confirm add info successful");
+                Intent intent=new Intent(this,Activity_addPlants.class);
+                startActivity(intent);
+            }
         }
-        else
-        {
-            Toast.makeText(this, "success", Toast.LENGTH_SHORT).show();
-            Log.d("insert","confirm add info successful");
-            Intent intent=new Intent(this,Activity_addPlants.class);
-            startActivity(intent);
+        else{
+            Toast.makeText(this, "Please at least provide the name", Toast.LENGTH_SHORT).show();
         }
+
     }
     public void cancel(View v){
         finish();

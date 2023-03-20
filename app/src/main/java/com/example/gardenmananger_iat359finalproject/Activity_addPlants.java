@@ -30,13 +30,13 @@ public class Activity_addPlants extends AppCompatActivity {
 
     public String interfaceColour;
     private RecyclerView masterRecycler;
-    private PlantsInfoAdd_recycler plantInfoAddRecycler,customPresetAddRecycler;
-    private LinearLayoutManager layoutManager,layoutManagerCustomPreset;
+    private PlantsInfoAdd_recycler plantInfoAddRecycler;
+    private LinearLayoutManager layoutManager;
 
     private ArrayList<String> list_plantAdd=new ArrayList<String>();
     private ArrayList list_selectedPlant,list_removePlant;
 
-    private Button button_confirm, button_discard, button_addCustom;
+    private Button button_confirm, button_discard, button_addCustom,button_manangeCustom;
 
     private TextView addPlantTextView;
 
@@ -52,6 +52,7 @@ public class Activity_addPlants extends AppCompatActivity {
         button_confirm=findViewById(R.id.button_confirm);
         button_discard=findViewById(R.id.button_discard);
         button_addCustom=findViewById(R.id.b_addnewCustomPreset);
+        button_manangeCustom=findViewById(R.id.b_manangeCustom);
 
         database = new plantDatabase(this);
         helper=new MyHelper(this);
@@ -67,7 +68,6 @@ public class Activity_addPlants extends AppCompatActivity {
         masterRecycler.setAdapter(plantInfoAddRecycler);
         // use a linear layout manager
         layoutManager = new LinearLayoutManager(this);
-        layoutManagerCustomPreset = new LinearLayoutManager(this);
         masterRecycler.setLayoutManager(layoutManager);
 
 
@@ -89,6 +89,10 @@ public class Activity_addPlants extends AppCompatActivity {
 
     public void addNewPresetIntent(View v){
         Intent intent=new Intent(this,Activity_addCustomPlantTemp.class);
+        startActivity(intent);
+    }
+    public void manangeCustomPreset(View v){
+        Intent intent=new Intent(this,Activity_manangeCustomPlants.class);
         startActivity(intent);
     }
 

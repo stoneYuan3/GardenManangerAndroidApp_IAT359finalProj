@@ -71,6 +71,16 @@ private final MyHelper helper;
         long id = database.insert(Constants.TABLE_CUSTOM_PRESET_PLANTS, null, contentValues);
         return id;
     }
+    public long deleteCustomPreset(ArrayList dataArr){
+        database = helper.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+
+        //To Be Done
+        long id=0;
+//        long id = database.insert(Constants.TABLE_CUSTOM_PRESET_PLANTS, null, contentValues);
+        return id;
+
+    }
 
     public void deleteUserPlantsByName(String name) {
         database = helper.getWritableDatabase();

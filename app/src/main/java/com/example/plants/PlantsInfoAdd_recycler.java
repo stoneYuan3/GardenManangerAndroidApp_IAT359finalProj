@@ -22,7 +22,7 @@ import java.util.ArrayList;
 public class PlantsInfoAdd_recycler extends RecyclerView.Adapter<PlantsInfoAdd_recycler.PlantInfoAddView>{
 
 //    private String title;
-    private ArrayList list_plant,list_customPlant,list_userPlant;
+    private ArrayList list_preset,list_plant,list_customPlant,list_userPlant;
 
     protected static ArrayList list_selectedPlant;
 
@@ -30,16 +30,25 @@ public class PlantsInfoAdd_recycler extends RecyclerView.Adapter<PlantsInfoAdd_r
     protected static ArrayList list_addPlantList,list_removePlantList;
 
     public PlantsInfoAdd_recycler(ArrayList<String> list_preset,ArrayList<String> list_custom,ArrayList<String> list_user){
-        this.list_plant=list_preset;
+        this.list_preset=list_preset;
         this.list_userPlant=list_user;
         this.list_customPlant=list_custom;
 
-        list_plant.addAll(list_customPlant);
-
-        for(int i=0;i<list_userPlant.size();i++){
-            String[] dataEach= (String[]) list_userPlant.get(i);
-            Log.d("list_userPlant", dataEach[1].toString());
+        //when displaying only custom plants
+        if(list_preset==null && list_customPlant!=null){
+            list_plant=list_customPlant;
         }
+        //on add plant interface: display both preset plant and custom plant
+        else{
+            list_plant=list_preset;
+            list_plant.addAll(list_customPlant);
+        }
+
+
+//        for(int i=0;i<list_userPlant.size();i++){
+//            String[] dataEach= (String[]) list_userPlant.get(i);
+//            Log.d("list_userPlant", dataEach[1].toString());
+//        }
 
         list_selectedPlant=new ArrayList();
         list_addPlantList=new ArrayList();
@@ -82,26 +91,26 @@ public class PlantsInfoAdd_recycler extends RecyclerView.Adapter<PlantsInfoAdd_r
         holder.ph=ph;
         holder.icon=icon;
 
-        //run boolean idenfication on whether this plant is selected here
-        for(int i=0;i<list_userPlant.size();i++){
-            String[] dataEach= (String[]) list_userPlant.get(i);
-            Log.d("test","comparing dataEach[1] "+ dataEach[1]+ " with title "+title);
+        if(list_userPlant!=null){
+            //run boolean idenfication on whether this plant is selected here
+            for(int i=0;i<list_userPlant.size();i++){
+                String[] dataEach= (String[]) list_userPlant.get(i);
+                Log.d("test","comparing dataEach[1] "+ dataEach[1]+ " with title "+title);
 
-            if(dataEach[1].equals(title)){
-                Log.d("test",dataEach[1]+" is the same");
-                holder.isSelected=true;
-                holder.isInUserList=true;
-                holder.switchUI(holder.isSelected);
-                break;
-            }
-            else{
-                holder.isSelected=false;
-                holder.isInUserList=false;
-                holder.switchUI(holder.isSelected);
+                if(dataEach[1].equals(title)){
+                    Log.d("test",dataEach[1]+" is the same");
+                    holder.isSelected=true;
+                    holder.isInUserList=true;
+                    holder.switchUI(holder.isSelected);
+                    break;
+                }
+                else{
+                    holder.isSelected=false;
+                    holder.isInUserList=false;
+                    holder.switchUI(holder.isSelected);
+                }
             }
         }
-//        Log.d("plantinfo","name " + holder.plantName);
-
     }
 
 
