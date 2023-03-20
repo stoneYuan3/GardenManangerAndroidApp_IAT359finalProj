@@ -110,7 +110,7 @@
                 android:layout_margin="5dp"
                 android:gravity="center|center_horizontal"
                 android:onClick="cancel"
-                android:text="go back"
+                android:text="Cancel"
                 android:textColor="#000000" />
         </LinearLayout>
 

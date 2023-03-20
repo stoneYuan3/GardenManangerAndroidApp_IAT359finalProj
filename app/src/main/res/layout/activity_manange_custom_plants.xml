@@ -29,16 +29,6 @@
         </androidx.recyclerview.widget.RecyclerView>
 
         <Button
-            android:id="@+id/button2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginLeft="10sp"
-            android:layout_marginRight="10sp"
-            android:layout_marginBottom="5sp"
-            android:text="Back" />
-
-        <Button
             android:id="@+id/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -46,7 +36,19 @@
             android:layout_marginLeft="10sp"
             android:layout_marginRight="10sp"
             android:layout_marginBottom="5sp"
+            android:onClick="delete"
             android:text="Delete Selected Presets" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="10sp"
+            android:layout_marginRight="10sp"
+            android:layout_marginBottom="5sp"
+            android:onClick="cancel"
+            android:text="Back" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

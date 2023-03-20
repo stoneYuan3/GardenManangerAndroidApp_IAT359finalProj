@@ -71,15 +71,18 @@ private final MyHelper helper;
         long id = database.insert(Constants.TABLE_CUSTOM_PRESET_PLANTS, null, contentValues);
         return id;
     }
-    public long deleteCustomPreset(ArrayList dataArr){
-        database = helper.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
+//    public int deleteCustomPreset(ArrayList dataArr){
+//        database = helper.getWritableDatabase();
+//        int result = database.execSQL("DELETE FROM " + Constants.TABLE_USERADD_PLANTS_NAME
+//                + " WHERE " + Constants.NAME + " = '" + (String) dataArr.get(0) + "'");
+//    }
 
-        //To Be Done
-        long id=0;
-//        long id = database.insert(Constants.TABLE_CUSTOM_PRESET_PLANTS, null, contentValues);
-        return id;
-
+    public boolean deleteCustomPreset(String plantName) {
+        SQLiteDatabase database = helper.getWritableDatabase();
+        String whereClause = Constants.NAME + " = ?";
+        String[] whereArgs = { plantName };
+        int rowsDeleted = database.delete(Constants.TABLE_CUSTOM_PRESET_PLANTS, whereClause, whereArgs);
+        return rowsDeleted > 0;
     }
 
     public void deleteUserPlantsByName(String name) {

@@ -42,13 +42,14 @@ public class Activity_addCustomPlantTemp extends AppCompatActivity {
     }
 
     public void submit(View v) {
-        String plantName = String.valueOf(input_plantName.getText());
-        String sunlight = String.valueOf(input_sunlight.getText());
-        String humid = String.valueOf(input_humid.getText());
-        String temperature = String.valueOf(input_temperature.getText());
-        String ph = String.valueOf(input_ph.getText());
+        String plantName = input_plantName.getText().toString();
+        String sunlight = input_sunlight.getText().toString();
+        String humid = input_humid.getText().toString();
+        String temperature = input_temperature.getText().toString();
+        String ph = input_ph.getText().toString();
 
-        if(plantName!=null){
+        if (plantName.length() > 0) {
+            ArrayList<String> list_customPlant = new ArrayList<>();
             list_customPlant.add(plantName);
             list_customPlant.add(sunlight);
             list_customPlant.add(humid);
@@ -56,24 +57,20 @@ public class Activity_addCustomPlantTemp extends AppCompatActivity {
             list_customPlant.add(ph);
 
             long id = database.insertUserCustomPreset(list_customPlant);
-            if (id < 0)
-            {
-                Toast.makeText(this, "fail", Toast.LENGTH_SHORT).show();
-                Log.d("insert","confirm add info fail");
-            }
-            else
-            {
-                Toast.makeText(this, "success", Toast.LENGTH_SHORT).show();
-                Log.d("insert","confirm add info successful");
-                Intent intent=new Intent(this,Activity_addPlants.class);
+            if (id < 0) {
+                Toast.makeText(this, "Insert failed", Toast.LENGTH_SHORT).show();
+                Log.d("insert","Confirm add info failed");
+            } else {
+                Toast.makeText(this, "Insert successful", Toast.LENGTH_SHORT).show();
+                Log.d("insert","Confirm add info successful");
+                Intent intent = new Intent(this, Activity_addPlants.class);
                 startActivity(intent);
             }
+        } else {
+            Toast.makeText(this, "Please provide at least the name", Toast.LENGTH_SHORT).show();
         }
-        else{
-            Toast.makeText(this, "Please at least provide the name", Toast.LENGTH_SHORT).show();
-        }
-
     }
+
     public void cancel(View v){
         finish();
     }
