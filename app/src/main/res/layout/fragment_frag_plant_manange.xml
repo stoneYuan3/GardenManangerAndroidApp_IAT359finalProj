@@ -16,22 +16,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0"
-            android:background="#606060"
+            android:background="#00606060"
             android:orientation="horizontal">
-
-            <ImageView
-                android:id="@+id/imageView5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0"
-                app:srcCompat="@drawable/ic_baseline_local_florist_96" />
 
             <TextView
                 android:id="@+id/harvestTextView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center_vertical"
-                android:text="Pocket Gardener"
+                android:gravity="center|center_vertical"
+                android:padding="15dp"
+                android:text="Your Plants"
                 android:textColor="#000000"
                 android:textSize="30sp"
                 android:textStyle="bold" />
@@ -44,24 +38,12 @@
             android:background="#00606060"
             android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/yourPlantsTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:padding="10dp"
-                android:text="YOUR PLANTS"
-                android:textColor="#000000"
-                android:textSize="16sp" />
-
             <Button
                 android:id="@+id/button_addPlant"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="5dp"
-                android:layout_weight="2"
                 android:gravity="center"
                 android:onClick="startAddPlantActivity"
                 android:text="add new plants"
