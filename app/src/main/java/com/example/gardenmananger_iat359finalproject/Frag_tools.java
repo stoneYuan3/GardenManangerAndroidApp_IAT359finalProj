@@ -14,7 +14,7 @@ import android.widget.TextView;
 
 
 public class Frag_tools extends Fragment {
-
+    private TextView x;
     private TextView tool_lightsense;
     Context context;
 
@@ -25,7 +25,10 @@ public class Frag_tools extends Fragment {
         View view=inflater.inflate(R.layout.fragment_frag_tools, container, false);
         context=container.getContext();
         tool_lightsense=container.findViewById(R.id.text_tool_lightsen);
-
+        x=container.findViewById(R.id.harvestTextView);
+        if (interfaceColour != null) {
+        x.setBackgroundColor(Color.parseColor(interfaceColour));
+        }
         return view;
     }
 

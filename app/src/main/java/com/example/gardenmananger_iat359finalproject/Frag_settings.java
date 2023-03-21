@@ -32,7 +32,7 @@ public class Frag_settings extends Fragment implements RadioGroup.OnCheckedChang
         interfaceColourRadioGroup.setOnCheckedChangeListener(this);
         settingsTextView = view.findViewById(R.id.harvestTextView);
         if (interfaceColour != null) {
-        settingsTextView.setBackgroundColor(Color.parseColor(interfaceColour));
+//        settingsTextView.setBackgroundColor(Color.parseColor(interfaceColour));
         }
 
         return view;
