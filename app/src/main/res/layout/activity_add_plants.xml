@@ -50,25 +50,35 @@
                 android:textColor="#000000"
                 android:textSize="16sp" />
 
-            <Button
-                android:id="@+id/b_addnewCustomPreset"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_gravity="center_horizontal"
-                android:layout_margin="5dp"
-                android:gravity="center"
-                android:onClick="addNewPresetIntent"
-                android:text="Add a custom plant"
-                android:textColor="#000000" />
-
-            <Button
-                android:id="@+id/b_manangeCustom"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
                 android:layout_weight="1"
-                android:onClick="manangeCustomPreset"
-                android:text="Delete Custom Plants" />
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/b_addnewCustomPreset"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:onClick="addNewPresetIntent"
+                    android:text="Add a custom plant"
+                    android:textColor="#000000" />
+
+                <Button
+                    android:id="@+id/b_manangeCustom"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_margin="5dp"
+                    android:layout_weight="2"
+                    android:onClick="manangeCustomPreset"
+                    android:text="Delete Custom Plants" />
+            </LinearLayout>
+
         </LinearLayout>
 
         <LinearLayout

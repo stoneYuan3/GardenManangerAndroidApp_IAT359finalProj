@@ -35,7 +35,7 @@ public class Activity_main_plantManangement extends AppCompatActivity implements
     plantDatabase database;
     MyHelper helper;
 
-    public static final String DEFAULT = "#F1F1F1";
+    public static final String DEFAULT = "#32772C";
 
 
     @Override
