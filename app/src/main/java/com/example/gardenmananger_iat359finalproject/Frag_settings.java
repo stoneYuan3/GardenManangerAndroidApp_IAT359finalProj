@@ -15,8 +15,6 @@ import android.widget.TextView;
 
 
 public class Frag_settings extends Fragment implements RadioGroup.OnCheckedChangeListener {
-
-    Switch nightMode;
     Context context;
     private RadioGroup interfaceColourRadioGroup;
     String id;
