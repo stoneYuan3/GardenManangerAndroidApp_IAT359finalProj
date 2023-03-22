@@ -1,9 +1,11 @@
 package com.example.plants;
 
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -39,11 +41,15 @@ public class plantsRecord_recycler extends RecyclerView.Adapter<plantsRecord_rec
         String harvestAmount=harvestInfoEach[1];
         String harvestStartDate=harvestInfoEach[2];
         String harvestEndDate=harvestInfoEach[3];
+        String harvestPhoto = harvestInfoEach[4];
+
+        Uri imgUri = Uri.parse(harvestPhoto);
 
         holder.recordName.setText(harvestTitle);
         holder.recordAmount.setText(harvestAmount);
         holder.recordStartDate.setText(harvestStartDate);
         holder.recordHarvestDate.setText(harvestEndDate);
+        holder.recordPhoto.setImageURI(imgUri);
 
         //again, remember to put photo in
 
@@ -56,6 +62,7 @@ public class plantsRecord_recycler extends RecyclerView.Adapter<plantsRecord_rec
 
     public static class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public TextView recordName,recordAmount,recordStartDate,recordHarvestDate;
+        public ImageView recordPhoto;
         public EditText titleEditText;
 
         public MyViewHolder(View itemView) {
@@ -64,6 +71,8 @@ public class plantsRecord_recycler extends RecyclerView.Adapter<plantsRecord_rec
             recordAmount=(TextView) itemView.findViewById(R.id.recordAmount);
             recordStartDate=(TextView) itemView.findViewById(R.id.recordStartDate);
             recordHarvestDate=(TextView) itemView.findViewById(R.id.recordHarvestDate);
+            recordPhoto=(ImageView) itemView.findViewById(R.id.harvestImageView);
+
 
             //again, remember to put photo in
 

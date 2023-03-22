@@ -109,7 +109,7 @@ private final MyHelper helper;
         //remember to add photo in after the camera function is done
 
         String[] columns = {Constants.UID_RECORD, Constants.HARVEST_PLANT, Constants.HARVEST_AMOUNT,Constants.HARVEST_STARTDATE,
-                Constants.HARVEST_HARVEST_DATE};
+                Constants.HARVEST_HARVEST_DATE, Constants.HARVEST_PHOTO};
 
         Cursor cursor;
         cursor = db.query(Constants.TABLE_HARVEST_RECORD_NAME, columns, null, null, null, null, null);
@@ -119,6 +119,7 @@ private final MyHelper helper;
         int index3 = cursor.getColumnIndex(Constants.HARVEST_AMOUNT);
         int index4 = cursor.getColumnIndex(Constants.HARVEST_STARTDATE);
         int index5 = cursor.getColumnIndex(Constants.HARVEST_HARVEST_DATE);
+        int index6 = cursor.getColumnIndex(Constants.HARVEST_PHOTO);
 
         ArrayList mArrayList = new ArrayList();
         cursor.moveToFirst();
@@ -127,9 +128,11 @@ private final MyHelper helper;
             String HarvestAmount = cursor.getString(index3);
             String HarvestStartDate = cursor.getString(index4);
             String HarvestEndDate = cursor.getString(index5);
+            String HarvestPhoto = cursor.getString(index6);
+
 
             String[] plantDataEach={
-                    HarvestTitle,HarvestAmount,HarvestStartDate,HarvestEndDate
+                    HarvestTitle,HarvestAmount,HarvestStartDate,HarvestEndDate, HarvestPhoto
             };
             mArrayList.add(plantDataEach);
             cursor.moveToNext();

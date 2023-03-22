@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.Editable;
@@ -27,6 +28,7 @@ import com.example.gardenmananger_iat359finalproject.database.MyHelper;
 import com.example.gardenmananger_iat359finalproject.database.plantDatabase;
 //import com.google.common.util.concurrent.ListenableFuture;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
 public class Activity_addRecord extends AppCompatActivity implements TextWatcher, View.OnClickListener {
@@ -44,6 +46,7 @@ public class Activity_addRecord extends AppCompatActivity implements TextWatcher
     private Button cameraBtn, submitBtn;
     private static final int imageId = 1;
     private ImageView capturedImg;
+    private Uri imgUri;
 
     //camera function permissions
     private final String[] PERMISSIONS_CAMERA = new String[]{"android.permission.CAMERA"};
@@ -86,7 +89,8 @@ public class Activity_addRecord extends AppCompatActivity implements TextWatcher
         String rec_amount= String.valueOf(input_rec_amount.getText());
         String rec_dateStart= String.valueOf(input_rec_dateStart.getText());
         String rec_dateEnd= String.valueOf(input_rec_dateEnd.getText());
-        String rec_photo = "photo placeholder";
+        String rec_photo = imgUri.toString();
+        Toast.makeText(this, rec_photo, Toast.LENGTH_SHORT).show();
         //check if everything is filled except the photo. the photo is optional.
         //should set another if statment inside this one to handle photo
         if(! (rec_name.equals("") || rec_amount.equals("") || rec_dateStart.equals("") || rec_dateEnd.equals("")) ){
@@ -128,6 +132,17 @@ public class Activity_addRecord extends AppCompatActivity implements TextWatcher
         super.onActivityResult(requestCode, resultCode, data);
         Bitmap image = (Bitmap) data.getExtras().get("data");
         capturedImg.setImageBitmap(image);
+
+        imgUri = getImageUri(this, image);
+    }
+
+    //save image into external storage
+//    code referenced from https://stackoverflow.com/questions/8295773/how-can-i-transform-a-bitmap-into-a-uri
+    public Uri getImageUri(Context inContext, Bitmap inImage) {
+        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+        inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+        String path = MediaStore.Images.Media.insertImage(inContext.getContentResolver(), inImage, "Title", null);
+        return Uri.parse(path);
     }
     @Override
     public void beforeTextChanged(CharSequence s, int start, int count, int after) {
