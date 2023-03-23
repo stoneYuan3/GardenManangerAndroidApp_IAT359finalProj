@@ -104,6 +104,7 @@ public class Activity_addPlants extends AppCompatActivity {
         if(list_selectedPlant.size()>0){
             for(int i=0;i<list_selectedPlant.size();i++){
                 String[] plantDataEach= (String[]) list_selectedPlant.get(i);
+                Log.d("imgc","icon: " + plantDataEach[2]);
                 String plant_id=plantDataEach[0];
                 String name=plantDataEach[1];
                 String icon=plantDataEach[2];

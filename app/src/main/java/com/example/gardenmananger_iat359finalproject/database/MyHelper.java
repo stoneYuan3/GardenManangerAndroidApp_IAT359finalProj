@@ -14,9 +14,9 @@ public class MyHelper extends SQLiteOpenHelper {
     private Context context;
 
     private String[][] presetPlants = {
-            {"Tomato", String.valueOf(R.drawable.ic_baseline_local_florist_96),"6-8 Hours", "60%", "15-30C","6-8 ph"},
-            {"Potato",String.valueOf(R.drawable.ic_baseline_yard_24),"6-8 Hours", "60%", "15-30C","6-8 ph"},
-            {"Lettuce",String.valueOf(R.drawable.ic_baseline_local_florist_96),"4-6 Hours", "70%", "5-20C","6-8 ph"}
+            {"Tomato", String.valueOf(R.drawable.tomato),"6-8 Hours", "60%", "15-30C","6-8 ph"},
+            {"Potato",String.valueOf(R.drawable.potato),"6-8 Hours", "60%", "15-30C","6-8 ph"},
+            {"Lettuce",String.valueOf(R.drawable.lettuce),"4-6 Hours", "70%", "5-20C","6-8 ph"}
     };
 
     private static final String CREATE_TABLE_PRESET_PLANTS =

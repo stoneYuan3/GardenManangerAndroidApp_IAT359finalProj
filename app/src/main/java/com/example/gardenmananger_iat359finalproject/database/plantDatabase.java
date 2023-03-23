@@ -5,6 +5,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.example.gardenmananger_iat359finalproject.R;
+
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
@@ -62,7 +64,7 @@ private final MyHelper helper;
         //0 is name, 1 is sun, 2 is humid, 3 is temperature, 4 is ph
         contentValues.put(Constants.NAME, (String) dataArr.get(0));
         //generic icon for all custom plants
-        contentValues.put(Constants.ICON,"@drawable/ic_baseline_local_florist_96");
+        contentValues.put(Constants.ICON,String.valueOf(R.drawable.ic_baseline_local_florist_96));
         contentValues.put(Constants.REQ_SUNLIGHT, (String) dataArr.get(1));
         contentValues.put(Constants.REQ_HUMIDITY, (String) dataArr.get(2));
         contentValues.put(Constants.REQ_TEMPERATURE, (String) dataArr.get(3));
@@ -173,8 +175,8 @@ private final MyHelper helper;
         ArrayList mArrayList = new ArrayList();
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
-            String plantName = cursor.getString(index1);
-            String plantType = cursor.getString(index2);
+            String plantID = cursor.getString(index1);
+            String plantName = cursor.getString(index2);
             String plantIcon = cursor.getString(index3);
             String plantSunlight = cursor.getString(index4);
             String plantHumidity = cursor.getString(index5);
@@ -182,7 +184,7 @@ private final MyHelper helper;
             String plantPh = cursor.getString(index7);
 
             String[] plantDataEach={
-                    plantName,plantType,plantIcon,plantSunlight,plantHumidity,plantTemperature,plantPh
+                    plantID,plantName,plantIcon,plantSunlight,plantHumidity,plantTemperature,plantPh
             };
             mArrayList.add(plantDataEach);
             cursor.moveToNext();

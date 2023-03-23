@@ -93,7 +93,7 @@ public class PlantsInfoAdd_recycler extends RecyclerView.Adapter<PlantsInfoAdd_r
         holder.humidity=humidity;
         holder.temperature=temperature;
         holder.ph=ph;
-//        holder.icon=icon.toString();
+        holder.icon=String.valueOf(iconId);
 
         Log.d("drawableCheck", plantDataEach[2]);
 
