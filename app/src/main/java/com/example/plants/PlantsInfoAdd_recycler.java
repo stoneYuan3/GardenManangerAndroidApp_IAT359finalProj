@@ -73,7 +73,7 @@ public class PlantsInfoAdd_recycler extends RecyclerView.Adapter<PlantsInfoAdd_r
         String id=plantDataEach[0];
         String title=plantDataEach[1];
 //        Drawable icon= Drawable.createFromPath(plantDataEach[2]);
-        int iconId=plantDataEach[2];
+        int iconId=Integer.parseInt(plantDataEach[2]);
         Drawable icon = ContextCompat.getDrawable(context, iconId);
         String sunlight=plantDataEach[3];
         String humidity=plantDataEach[4];

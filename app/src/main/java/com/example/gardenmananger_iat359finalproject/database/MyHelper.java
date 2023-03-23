@@ -7,21 +7,23 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
 
+import com.example.gardenmananger_iat359finalproject.R;
+
 public class MyHelper extends SQLiteOpenHelper {
 
     private Context context;
 
     private String[][] presetPlants = {
-            {"Tomato","@drawable/ic_baseline_local_florist_96","6-8 Hours", "60%", "15-30C","6-8 ph"},
-            {"Potato","@drawable/ic_baseline_yard_24","6-8 Hours", "60%", "15-30C","6-8 ph"},
-            {"Lettuce","@drawable/ic_baseline_local_florist_96","4-6 Hours", "70%", "5-20C","6-8 ph"}
+            {"Tomato", String.valueOf(R.drawable.ic_baseline_local_florist_96),"6-8 Hours", "60%", "15-30C","6-8 ph"},
+            {"Potato",String.valueOf(R.drawable.ic_baseline_yard_24),"6-8 Hours", "60%", "15-30C","6-8 ph"},
+            {"Lettuce",String.valueOf(R.drawable.ic_baseline_local_florist_96),"4-6 Hours", "70%", "5-20C","6-8 ph"}
     };
 
     private static final String CREATE_TABLE_PRESET_PLANTS =
             "CREATE TABLE "+
                     Constants.TABLE_PRESET_PLANTS_NAME + " (" +
                     Constants.UID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                    Constants.NAME + " TEXT," + Constants.ICON + " TEXT," +
+                    Constants.NAME + " TEXT," + Constants.ICON + " INT," +
                     Constants.REQ_SUNLIGHT + " TEXT," + Constants.REQ_HUMIDITY + " TEXT,"
                     + Constants.REQ_TEMPERATURE + " TEXT,"
                     + Constants.REQ_SOILPH + " TEXT " +  ");" ;
@@ -30,7 +32,7 @@ public class MyHelper extends SQLiteOpenHelper {
             "CREATE TABLE "+
                     Constants.TABLE_USERADD_PLANTS_NAME + " (" +
                     Constants.UID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                    Constants.NAME + " TEXT," + Constants.ICON + " TEXT," +
+                    Constants.NAME + " TEXT," + Constants.ICON + " INT," +
                     Constants.REQ_SUNLIGHT + " TEXT," + Constants.REQ_HUMIDITY + " TEXT,"
                     + Constants.REQ_TEMPERATURE + " TEXT,"
                     + Constants.REQ_SOILPH + " TEXT " +  ");" ;
@@ -39,7 +41,7 @@ public class MyHelper extends SQLiteOpenHelper {
             "CREATE TABLE "+
                     Constants.TABLE_CUSTOM_PRESET_PLANTS + " (" +
                     Constants.UID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                    Constants.NAME + " TEXT," + Constants.ICON + " TEXT," +
+                    Constants.NAME + " TEXT," + Constants.ICON + " INT," +
                     Constants.REQ_SUNLIGHT + " TEXT," + Constants.REQ_HUMIDITY + " TEXT,"
                     + Constants.REQ_TEMPERATURE + " TEXT,"
                     + Constants.REQ_SOILPH + " TEXT " +  ");" ;

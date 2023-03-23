@@ -1,5 +1,7 @@
 package com.example.plants;
 
+import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.gardenmananger_iat359finalproject.R;
@@ -23,12 +26,14 @@ public class plantsRecord_recycler extends RecyclerView.Adapter<plantsRecord_rec
     public plantsRecord_recycler(ArrayList list){
         this.list_plantRecord=list;
     }
+    private Context context;
 
     @Override
     public plantsRecord_recycler.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_harvestrecord,parent,false);
 
         plantsRecord_recycler.MyViewHolder plantRecordShowView = new plantsRecord_recycler.MyViewHolder(v);
+        context = parent.getContext();
 
         return plantRecordShowView;
     }
@@ -51,7 +56,15 @@ public class plantsRecord_recycler extends RecyclerView.Adapter<plantsRecord_rec
         holder.recordAmount.setText(harvestAmount);
         holder.recordStartDate.setText(harvestStartDate);
         holder.recordHarvestDate.setText(harvestEndDate);
-        holder.recordPhoto.setImageURI(imgUri);
+
+        if (imgUri != null && !"none".equals(imgUri.toString())) {
+            holder.recordPhoto.setImageURI(imgUri);
+        }
+
+        else{
+            Drawable icon = ContextCompat.getDrawable(context, R.drawable.ic_baseline_edit_note_24);
+            holder.recordPhoto.setImageDrawable(icon);
+        }
 
         //again, remember to put photo in
 
