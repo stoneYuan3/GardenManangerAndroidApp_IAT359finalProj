@@ -1,6 +1,7 @@
 package com.example.plants;
 
 import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,6 +45,7 @@ public class plantsRecord_recycler extends RecyclerView.Adapter<plantsRecord_rec
         String harvestPhoto = harvestInfoEach[4];
 
         Uri imgUri = Uri.parse(harvestPhoto);
+        Log.d("imgsrc", imgUri.toString());
 
         holder.recordName.setText(harvestTitle);
         holder.recordAmount.setText(harvestAmount);

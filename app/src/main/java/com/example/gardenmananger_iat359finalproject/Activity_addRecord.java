@@ -89,7 +89,12 @@ public class Activity_addRecord extends AppCompatActivity implements TextWatcher
         String rec_amount= String.valueOf(input_rec_amount.getText());
         String rec_dateStart= String.valueOf(input_rec_dateStart.getText());
         String rec_dateEnd= String.valueOf(input_rec_dateEnd.getText());
-        String rec_photo = imgUri.toString();
+        String rec_photo;
+        if (imgUri != null) {
+            rec_photo = imgUri.toString();
+        } else {
+            rec_photo = String.valueOf(R.drawable.ic_baseline_local_florist_96);
+        }
         Toast.makeText(this, rec_photo, Toast.LENGTH_SHORT).show();
         //check if everything is filled except the photo. the photo is optional.
         //should set another if statment inside this one to handle photo

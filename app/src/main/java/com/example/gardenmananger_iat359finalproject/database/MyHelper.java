@@ -13,7 +13,7 @@ public class MyHelper extends SQLiteOpenHelper {
 
     private String[][] presetPlants = {
             {"Tomato","@drawable/ic_baseline_local_florist_96","6-8 Hours", "60%", "15-30C","6-8 ph"},
-            {"Potato","@drawable/ic_baseline_local_florist_96","6-8 Hours", "60%", "15-30C","6-8 ph"},
+            {"Potato","@drawable/ic_baseline_yard_24","6-8 Hours", "60%", "15-30C","6-8 ph"},
             {"Lettuce","@drawable/ic_baseline_local_florist_96","4-6 Hours", "70%", "5-20C","6-8 ph"}
     };
 
@@ -61,6 +61,8 @@ public class MyHelper extends SQLiteOpenHelper {
 
     private static final String DROP_PRESET_TABLE = "DROP TABLE IF EXISTS " +Constants.TABLE_PRESET_PLANTS_NAME;
     private static final String DROP_USER_TABLE = "DROP TABLE IF EXISTS " +Constants.TABLE_USERADD_PLANTS_NAME;
+    private static final String DROP_USERPRESET_TABLE = "DROP TABLE IF EXISTS " +Constants.TABLE_CUSTOM_PRESET_PLANTS;
+
     private static final String DROP_HARVEST = "DROP TABLE IF EXISTS " +Constants.TABLE_HARVEST_RECORD_NAME;
 
     public MyHelper(Context context){
@@ -112,6 +114,7 @@ public class MyHelper extends SQLiteOpenHelper {
             database.execSQL(DROP_PRESET_TABLE);
             database.execSQL(DROP_USER_TABLE);
             database.execSQL(DROP_HARVEST);
+            database.execSQL(DROP_USERPRESET_TABLE);
             onCreate(database);
             Toast.makeText(context, "onUpgrade called", Toast.LENGTH_SHORT).show();
         } catch (SQLException e) {

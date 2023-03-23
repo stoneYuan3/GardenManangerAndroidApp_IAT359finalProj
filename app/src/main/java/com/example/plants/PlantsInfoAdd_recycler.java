@@ -1,17 +1,21 @@
 package com.example.plants;
 
+import android.content.Context;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.gardenmananger_iat359finalproject.R;
@@ -23,6 +27,7 @@ public class PlantsInfoAdd_recycler extends RecyclerView.Adapter<PlantsInfoAdd_r
 
 //    private String title;
     private ArrayList list_preset,list_plant,list_customPlant,list_userPlant;
+    private Context context;
 
     protected static ArrayList list_selectedPlant;
 
@@ -33,7 +38,6 @@ public class PlantsInfoAdd_recycler extends RecyclerView.Adapter<PlantsInfoAdd_r
         this.list_preset=list_preset;
         this.list_userPlant=list_user;
         this.list_customPlant=list_custom;
-
         //when displaying only custom plants
         if(list_preset==null && list_customPlant!=null){
             list_plant=list_customPlant;
@@ -43,16 +47,10 @@ public class PlantsInfoAdd_recycler extends RecyclerView.Adapter<PlantsInfoAdd_r
             list_plant=list_preset;
             list_plant.addAll(list_customPlant);
         }
-
-
-//        for(int i=0;i<list_userPlant.size();i++){
-//            String[] dataEach= (String[]) list_userPlant.get(i);
-//            Log.d("list_userPlant", dataEach[1].toString());
-//        }
-
         list_selectedPlant=new ArrayList();
         list_addPlantList=new ArrayList();
         list_removePlantList=new ArrayList();
+
     }
 
     @NonNull
@@ -61,17 +59,22 @@ public class PlantsInfoAdd_recycler extends RecyclerView.Adapter<PlantsInfoAdd_r
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_layout_plantadd_view,parent,false);
         PlantInfoAddView plantInfoAddView = new PlantInfoAddView(v);
 //        Log.d("plantinfo","name " + plantInfoAddView.plantName);
+        context = parent.getContext();
         return plantInfoAddView;
     }
 
     @Override
     public void onBindViewHolder(@NonNull PlantInfoAddView holder, int position) {
 
+
+
         String[] plantDataEach = (String[]) list_plant.get(position);
         //0 is id, 2 is icon
         String id=plantDataEach[0];
         String title=plantDataEach[1];
-        String icon=plantDataEach[2];
+//        Drawable icon= Drawable.createFromPath(plantDataEach[2]);
+        int iconId=plantDataEach[2];
+        Drawable icon = ContextCompat.getDrawable(context, iconId);
         String sunlight=plantDataEach[3];
         String humidity=plantDataEach[4];
         String temperature=plantDataEach[5];
@@ -83,13 +86,16 @@ public class PlantsInfoAdd_recycler extends RecyclerView.Adapter<PlantsInfoAdd_r
         holder.plantInfo_soilMoist.setText(humidity);
         holder.plantInfo_temperature.setText(temperature);
         holder.plantInfo_soilPH.setText(ph);
+        holder.plant_icon.setImageDrawable(icon);
 
         holder.plantName=title;
         holder.sunlight=sunlight;
         holder.humidity=humidity;
         holder.temperature=temperature;
         holder.ph=ph;
-        holder.icon=icon;
+//        holder.icon=icon.toString();
+
+        Log.d("drawableCheck", plantDataEach[2]);
 
         if(list_userPlant!=null){
             //run boolean idenfication on whether this plant is selected here
@@ -136,6 +142,7 @@ public class PlantsInfoAdd_recycler extends RecyclerView.Adapter<PlantsInfoAdd_r
 
         public TextView plantInfo_title, plantInfo_sunlight, plantInfo_soilMoist,plantInfo_temperature,plantInfo_soilPH;
         public ImageButton button_check;
+        public ImageView plant_icon;
         boolean isSelected;
         boolean isInUserList;
 
@@ -151,6 +158,7 @@ public class PlantsInfoAdd_recycler extends RecyclerView.Adapter<PlantsInfoAdd_r
             plantInfo_soilMoist=(TextView) itemView.findViewById(R.id.plantInfo_soilMoist);
             plantInfo_temperature=(TextView) itemView.findViewById(R.id.plantInfo_temperature);
             plantInfo_soilPH=(TextView) itemView.findViewById(R.id.plantInfo_soilPH);
+            plant_icon = (ImageView) itemView.findViewById(R.id.plant_icon);
 
             button_check=itemView.findViewById(R.id.button_check);
 
@@ -177,7 +185,6 @@ public class PlantsInfoAdd_recycler extends RecyclerView.Adapter<PlantsInfoAdd_r
                     list_removePlantList.add(plantData);
                 }
 
-
                 for(int i=0;i<list_selectedPlant.size();i++){
                     String[] dataEach= (String[]) list_selectedPlant.get(i);
                     Log.d("list_selectedPlant", "list_selectedPlant has: "+dataEach[1].toString());
@@ -203,8 +210,6 @@ public class PlantsInfoAdd_recycler extends RecyclerView.Adapter<PlantsInfoAdd_r
                     String[] plantData={id,plantName,icon,sunlight,humidity,temperature,ph};
                     list_selectedPlant.add(plantData);
                 }
-
-
 
                 for(int i=0;i<list_selectedPlant.size();i++){
                     String[] dataEach= (String[]) list_selectedPlant.get(i);
