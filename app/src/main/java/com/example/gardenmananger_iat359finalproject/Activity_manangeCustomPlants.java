@@ -64,6 +64,8 @@ public class Activity_manangeCustomPlants extends AppCompatActivity {
             for(int i=0;i<list_selectedPlant.size();i++){
                 String[] plantDataEach= (String[]) list_selectedPlant.get(i);
                 String name=plantDataEach[1];
+
+                database.deleteUserPlantsByName(name);
                 boolean result = database.deleteCustomPreset(name);
                 if(result){
                     Toast.makeText(this, "delete successful", Toast.LENGTH_SHORT).show();

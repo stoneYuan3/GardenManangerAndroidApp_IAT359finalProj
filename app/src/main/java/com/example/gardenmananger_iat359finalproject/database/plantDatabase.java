@@ -73,11 +73,6 @@ private final MyHelper helper;
         long id = database.insert(Constants.TABLE_CUSTOM_PRESET_PLANTS, null, contentValues);
         return id;
     }
-//    public int deleteCustomPreset(ArrayList dataArr){
-//        database = helper.getWritableDatabase();
-//        int result = database.execSQL("DELETE FROM " + Constants.TABLE_USERADD_PLANTS_NAME
-//                + " WHERE " + Constants.NAME + " = '" + (String) dataArr.get(0) + "'");
-//    }
 
     public boolean deleteCustomPreset(String plantName) {
         SQLiteDatabase database = helper.getWritableDatabase();

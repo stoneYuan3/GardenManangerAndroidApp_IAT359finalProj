@@ -49,10 +49,6 @@ public class Frag_plantManange extends Fragment implements View.OnClickListener 
 
         context=container.getContext();
         // Inflate the layout for this fragment
-//        list_plantShow=new ArrayList<String>();
-//        list_plantShow.add("Tomato");
-//        list_plantShow.add("Potato");
-
 
         database = new plantDatabase(context);
         helper=new MyHelper(context);
