@@ -117,6 +117,11 @@ public class Activity_main_plantManangement extends AppCompatActivity implements
         startActivity(intent);
     }
 
+    public void startTempActivity(View v){
+        Intent intent=new Intent(this,Activity_temperature.class);
+        startActivity(intent);
+    }
+
     public void startAddPlantActivity(View v){
         Intent intent=new Intent(this,Activity_addPlants.class);
         startActivity(intent);
