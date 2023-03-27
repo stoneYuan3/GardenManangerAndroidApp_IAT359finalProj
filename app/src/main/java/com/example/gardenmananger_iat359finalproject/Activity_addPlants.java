@@ -25,6 +25,8 @@ import com.example.gardenmananger_iat359finalproject.database.plantDatabase;
 import com.example.plants.PlantsInfoAdd_recycler;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class Activity_addPlants extends AppCompatActivity {
 
@@ -79,6 +81,8 @@ public class Activity_addPlants extends AppCompatActivity {
             button_confirm.setBackgroundColor(Color.parseColor(interfaceColour));
             button_discard.setBackgroundColor(Color.parseColor(interfaceColour));
         }
+
+
     }
     public void getSelected(View v){
         list_selectedPlant=plantInfoAddRecycler.getSelectedList();

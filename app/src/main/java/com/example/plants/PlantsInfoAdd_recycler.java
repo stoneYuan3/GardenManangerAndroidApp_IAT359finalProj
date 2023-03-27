@@ -21,6 +21,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.gardenmananger_iat359finalproject.R;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 
 public class PlantsInfoAdd_recycler extends RecyclerView.Adapter<PlantsInfoAdd_recycler.PlantInfoAddView>{
@@ -50,7 +52,6 @@ public class PlantsInfoAdd_recycler extends RecyclerView.Adapter<PlantsInfoAdd_r
         list_selectedPlant=new ArrayList();
         list_addPlantList=new ArrayList();
         list_removePlantList=new ArrayList();
-
     }
 
     @NonNull
@@ -65,9 +66,6 @@ public class PlantsInfoAdd_recycler extends RecyclerView.Adapter<PlantsInfoAdd_r
 
     @Override
     public void onBindViewHolder(@NonNull PlantInfoAddView holder, int position) {
-
-
-
         String[] plantDataEach = (String[]) list_plant.get(position);
         //0 is id, 2 is icon
         String id=plantDataEach[0];
@@ -138,13 +136,13 @@ public class PlantsInfoAdd_recycler extends RecyclerView.Adapter<PlantsInfoAdd_r
         list_removePlantList.clear();
     }
 
-    public static class PlantInfoAddView extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public class PlantInfoAddView extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         public TextView plantInfo_title, plantInfo_sunlight, plantInfo_soilMoist,plantInfo_temperature,plantInfo_soilPH;
         public ImageButton button_check;
         public ImageView plant_icon;
-        boolean isSelected;
-        boolean isInUserList;
+        public boolean isSelected;
+        public boolean isInUserList;
 
         public String id,plantName,sunlight,humidity,temperature,ph,icon;
 
@@ -224,6 +222,7 @@ public class PlantsInfoAdd_recycler extends RecyclerView.Adapter<PlantsInfoAdd_r
                 switchUI(isSelected);
 
             }
+
         }
 
         public void switchUI(boolean bool){
