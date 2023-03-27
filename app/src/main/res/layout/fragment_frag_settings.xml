@@ -34,7 +34,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:padding="10dp">
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="30dp">
 
             <TextView
                 android:id="@+id/interfaceColourTextView"
@@ -107,9 +108,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_margin="10dp"
+            android:layout_margin="30dp"
             android:onClick="prefs"
-            android:text="Confirm Colour" />
+            android:padding="15dp"
+            android:text="Confirm Colour"
+            android:textColor="#000000" />
 
     </LinearLayout>
 

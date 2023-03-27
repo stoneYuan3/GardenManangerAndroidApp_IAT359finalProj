@@ -9,46 +9,70 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="15dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="15dp">
 
         <TextView
-            android:id="@+id/textView8"
+            android:id="@+id/addPlantsTextView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="15dp"
             android:text="Your Custom Plants"
             android:textColor="#000000"
-            android:textSize="30sp" />
+            android:textSize="30sp"
+            android:textStyle="bold" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/list_customPlants"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1">
+            android:orientation="vertical"
+            android:padding="10dp">
 
-        </androidx.recyclerview.widget.RecyclerView>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/list_customPlants"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
 
-        <Button
-            android:id="@+id/button"
-            android:layout_width="wrap_content"
+            </androidx.recyclerview.widget.RecyclerView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginLeft="10sp"
-            android:layout_marginRight="10sp"
-            android:layout_marginBottom="5sp"
-            android:onClick="delete"
-            android:text="Delete Selected Presets" />
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginVertical="40dp"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginLeft="10sp"
-            android:layout_marginRight="10sp"
-            android:layout_marginBottom="5sp"
-            android:onClick="cancel"
-            android:text="Back" />
+            <Button
+                android:id="@+id/b_preset_confirm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="10sp"
+                android:layout_marginRight="10sp"
+                android:layout_weight="2"
+                android:onClick="submit"
+                android:padding="15dp"
+                android:text="Delete Selection"
+                android:textColor="#000000" />
+
+            <Button
+                android:id="@+id/b_preset_cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="10sp"
+                android:layout_marginRight="10sp"
+                android:layout_weight="1"
+                android:onClick="cancel"
+                android:padding="15dp"
+                android:text="Cancel"
+                android:textColor="#000000" />
+        </LinearLayout>
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

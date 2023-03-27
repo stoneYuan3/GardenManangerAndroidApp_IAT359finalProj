@@ -1,8 +1,13 @@
 package com.example.gardenmananger_iat359finalproject;
 
+import static com.example.gardenmananger_iat359finalproject.Activity_main_plantManangement.DEFAULT;
+
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -19,7 +24,8 @@ public class Activity_addCustomPlantTemp extends AppCompatActivity {
 
 
     private EditText input_plantName,input_sunlight,input_humid,input_temperature,input_ph;
-//    private Button
+    private Button confirm, cancel;
+    public String interfaceColour;
     plantDatabase database;
     MyHelper helper;
 
@@ -32,6 +38,8 @@ public class Activity_addCustomPlantTemp extends AppCompatActivity {
 
         database = new plantDatabase(this);
         helper=new MyHelper(this);
+        confirm=findViewById(R.id.b_preset_confirm);
+        cancel=findViewById(R.id.b_preset_cancel);
 
         input_plantName=findViewById(R.id.input_plantName);
         input_sunlight=findViewById(R.id.input_sunlight);
@@ -39,6 +47,12 @@ public class Activity_addCustomPlantTemp extends AppCompatActivity {
         input_temperature=findViewById(R.id.input_temperature);
         input_ph=findViewById(R.id.input_ph);
 
+        SharedPreferences preferences = getSharedPreferences("MyData", Context.MODE_PRIVATE);
+        interfaceColour = preferences.getString("colourId", DEFAULT);
+        if (interfaceColour != null) {
+            confirm.setBackgroundColor(Color.parseColor(interfaceColour));
+            cancel.setBackgroundColor(Color.parseColor(interfaceColour));
+        }
     }
 
     public void submit(View v) {

@@ -95,7 +95,7 @@ public class Activity_addRecord extends AppCompatActivity implements TextWatcher
         } else {
             rec_photo = "none";
         }
-        Toast.makeText(this, rec_photo, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, rec_photo, Toast.LENGTH_SHORT).show();
         //check if everything is filled except the photo. the photo is optional.
         //should set another if statment inside this one to handle photo
         if(! (rec_name.equals("") || rec_amount.equals("") || rec_dateStart.equals("") || rec_dateEnd.equals("")) ){
@@ -123,7 +123,7 @@ public class Activity_addRecord extends AppCompatActivity implements TextWatcher
             }
         }
         else{
-            Toast.makeText(this, "You havent complete the form!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "You need to complete the form first!", Toast.LENGTH_SHORT).show();
         }
     }
 

@@ -8,67 +8,78 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="15dp"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="15dp">
 
         <TextView
             android:id="@+id/addPlantsTextView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Add Custom Plant Presets"
+            android:gravity="center"
+            android:padding="15dp"
+            android:text="Create Your Custom Plant:"
             android:textColor="#000000"
-            android:textSize="30sp" />
+            android:textSize="30sp"
+            android:textStyle="bold" />
 
-        <EditText
-            android:id="@+id/input_plantName"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:drawableStart="@drawable/ic_baseline_edit_note_24"
-            android:ems="10"
-            android:hint="Plant Name"
-            android:inputType="textPersonName" />
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="10dp">
 
-        <EditText
-            android:id="@+id/input_sunlight"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:drawableStart="@drawable/ic_baseline_light_mode_24"
-            android:ems="10"
-            android:hint="Sunlight Per Day"
-            android:inputType="textPersonName" />
+            <EditText
+                android:id="@+id/input_plantName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_baseline_edit_note_24"
+                android:ems="10"
+                android:hint="Plant Name"
+                android:inputType="textPersonName" />
 
-        <EditText
-            android:id="@+id/input_humid"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:drawableStart="@drawable/ic_baseline_water_drop_24"
-            android:ems="10"
-            android:hint="Soil Humid"
-            android:inputType="textPersonName" />
+            <EditText
+                android:id="@+id/input_sunlight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_baseline_light_mode_24"
+                android:ems="10"
+                android:hint="Sunlight Per Day"
+                android:inputType="textPersonName" />
 
-        <EditText
-            android:id="@+id/input_temperature"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:drawableStart="@drawable/ic_baseline_device_thermostat_24"
-            android:ems="10"
-            android:hint="Temperature"
-            android:inputType="textPersonName" />
+            <EditText
+                android:id="@+id/input_humid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_baseline_water_drop_24"
+                android:ems="10"
+                android:hint="Soil Humid"
+                android:inputType="textPersonName" />
 
-        <EditText
-            android:id="@+id/input_ph"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:drawableStart="@drawable/ic_baseline_scale_24"
-            android:ems="10"
-            android:hint="Soil PH"
-            android:inputType="textPersonName" />
+            <EditText
+                android:id="@+id/input_temperature"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_baseline_device_thermostat_24"
+                android:ems="10"
+                android:hint="Temperature"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/input_ph"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_baseline_scale_24"
+                android:ems="10"
+                android:hint="Soil PH"
+                android:inputType="textPersonName" />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10sp"
+            android:layout_margin="40dp"
             android:gravity="center_horizontal"
             android:orientation="horizontal">
 
@@ -80,7 +91,9 @@
                 android:layout_marginLeft="10sp"
                 android:layout_marginRight="10sp"
                 android:onClick="submit"
-                android:text="Confirm" />
+                android:padding="15dp"
+                android:text="Confirm"
+                android:textColor="#000000" />
 
             <Button
                 android:id="@+id/b_preset_cancel"
@@ -91,7 +104,9 @@
                 android:layout_marginRight="10sp"
                 android:layout_weight="0"
                 android:onClick="cancel"
-                android:text="Cancel" />
+                android:padding="15dp"
+                android:text="Cancel"
+                android:textColor="#000000" />
         </LinearLayout>
 
     </LinearLayout>

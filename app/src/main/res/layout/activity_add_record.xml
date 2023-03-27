@@ -130,7 +130,7 @@
             android:layout_gravity="center"
             android:layout_weight="0"
             android:onClick="onClick"
-            android:text="Add Cover Image"
+            android:text="Add cover photo"
             android:textColor="#000000" />
 
         <ImageView
@@ -147,6 +147,7 @@
             android:layout_gravity="bottom"
             android:layout_weight="0"
             android:onClick="submit"
+            android:padding="20dp"
             android:text="submit"
             android:textColor="#000000" />
 

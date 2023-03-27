@@ -1,12 +1,18 @@
 package com.example.gardenmananger_iat359finalproject;
 
+import static com.example.gardenmananger_iat359finalproject.Activity_main_plantManangement.DEFAULT;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.gardenmananger_iat359finalproject.database.MyHelper;
@@ -24,7 +30,8 @@ public class Activity_manangeCustomPlants extends AppCompatActivity {
     private PlantsInfoAdd_recycler plantInfoAddRecycler;
     private LinearLayoutManager layoutManager;
     private ArrayList list_selectedPlant;
-
+    private Button confirm, cancel;
+    public String interfaceColour;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +39,8 @@ public class Activity_manangeCustomPlants extends AppCompatActivity {
 
         database = new plantDatabase(this);
         helper=new MyHelper(this);
+        confirm=findViewById(R.id.b_preset_confirm);
+        cancel=findViewById(R.id.b_preset_cancel);
 
         ArrayList list_customPlants=database.preparePresetPlantData("userPreset");
         list_selectedPlant=new ArrayList();
@@ -44,6 +53,12 @@ public class Activity_manangeCustomPlants extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(this);
         masterRecycler.setLayoutManager(layoutManager);
 
+        SharedPreferences preferences = getSharedPreferences("MyData", Context.MODE_PRIVATE);
+        interfaceColour = preferences.getString("colourId", DEFAULT);
+        if (interfaceColour != null) {
+            confirm.setBackgroundColor(Color.parseColor(interfaceColour));
+            cancel.setBackgroundColor(Color.parseColor(interfaceColour));
+        }
     }
 
     private void listReset(){

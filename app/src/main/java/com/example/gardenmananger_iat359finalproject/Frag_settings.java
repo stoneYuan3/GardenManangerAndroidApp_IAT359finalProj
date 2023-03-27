@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.RadioGroup;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -20,6 +21,8 @@ public class Frag_settings extends Fragment implements RadioGroup.OnCheckedChang
     String id;
     public TextView settingsTextView;
     public String interfaceColour;
+
+    public Button submitColour;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -29,8 +32,10 @@ public class Frag_settings extends Fragment implements RadioGroup.OnCheckedChang
         interfaceColourRadioGroup = view.findViewById(R.id.interfaceColourRadioGroup);
         interfaceColourRadioGroup.setOnCheckedChangeListener(this);
         settingsTextView = view.findViewById(R.id.harvestTextView);
+        submitColour = view.findViewById(R.id.submitColour);
         if (interfaceColour != null) {
         settingsTextView.setBackgroundColor(Color.parseColor(interfaceColour));
+        submitColour.setBackgroundColor(Color.parseColor(interfaceColour));
         }
 
         return view;

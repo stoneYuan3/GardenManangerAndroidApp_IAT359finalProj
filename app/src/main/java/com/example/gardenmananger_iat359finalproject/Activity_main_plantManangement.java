@@ -147,6 +147,7 @@ public class Activity_main_plantManangement extends AppCompatActivity implements
         fragTools.interfaceColour = preferences.getString("colourId", DEFAULT);
 
         fragSettings.settingsTextView.setBackgroundColor(Color.parseColor(fragSettings.interfaceColour));
+        fragSettings.submitColour.setBackgroundColor(Color.parseColor(fragSettings.interfaceColour));
         nav_bottom.setBackgroundColor(Color.parseColor(preferences.getString("colourId", DEFAULT)));
     }
 }
