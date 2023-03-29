@@ -21,7 +21,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingLeft="10dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -35,7 +36,8 @@
                     android:layout_marginRight="10sp"
                     android:text="Plant Name"
                     android:textColor="#000000"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/recordAmount"
@@ -58,7 +60,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="10sp"
                     android:text="Start Date:"
-                    android:textColor="#000000" />
+                    android:textColor="#000000"
+                    android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/recordStartDate"
@@ -67,7 +70,7 @@
                     android:layout_weight="1"
                     android:text="TextView"
                     android:textColor="#000000"
-                    />
+                    android:textSize="16sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -81,7 +84,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="10sp"
                     android:text="Harvest Date:"
-                    android:textColor="#000000" />
+                    android:textColor="#000000"
+                    android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/recordHarvestDate"
@@ -90,7 +94,7 @@
                     android:layout_weight="1"
                     android:text="TextView"
                     android:textColor="#000000"
-                    />
+                    android:textSize="16sp" />
             </LinearLayout>
 
         </LinearLayout>
