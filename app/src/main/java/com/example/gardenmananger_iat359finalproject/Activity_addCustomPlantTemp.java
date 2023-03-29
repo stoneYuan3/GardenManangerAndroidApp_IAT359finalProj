@@ -55,6 +55,7 @@ public class Activity_addCustomPlantTemp extends AppCompatActivity {
         }
     }
 
+//    when user presses submit, adds the newly defined plant to the list and into the database
     public void submit(View v) {
         String plantName = input_plantName.getText().toString();
         String sunlight = input_sunlight.getText().toString();

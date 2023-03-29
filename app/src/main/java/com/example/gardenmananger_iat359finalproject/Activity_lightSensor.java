@@ -62,6 +62,7 @@ public class Activity_lightSensor extends AppCompatActivity implements SensorEve
         sensorMaster.unregisterListener(this);
     }
 
+//    checks light sensor value and corresponds it to a certain level
     @Override
     public void onSensorChanged(SensorEvent event) {
         if(event.sensor.getType()==TYPE_LIGHT){

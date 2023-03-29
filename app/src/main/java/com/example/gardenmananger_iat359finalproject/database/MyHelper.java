@@ -10,9 +10,9 @@ import android.widget.Toast;
 import com.example.gardenmananger_iat359finalproject.R;
 
 public class MyHelper extends SQLiteOpenHelper {
-
     private Context context;
 
+//Define apps preset plants to select from
     private String[][] presetPlants = {
             {"Tomato", String.valueOf(R.drawable.tomato),"6-8 Hours", "60%", "15-30C","6-8 ph"},
             {"Potato",String.valueOf(R.drawable.potato),"6-8 Hours", "60%", "15-30C","6-8 ph"},
@@ -27,6 +27,7 @@ public class MyHelper extends SQLiteOpenHelper {
 //            {"Cucumber",String.valueOf(R.drawable.cucumber),"6-8 Hours", "70%", "5-20C","6-8 ph"}
     };
 
+//    add plants table
     private static final String CREATE_TABLE_PRESET_PLANTS =
             "CREATE TABLE "+
                     Constants.TABLE_PRESET_PLANTS_NAME + " (" +
@@ -45,6 +46,7 @@ public class MyHelper extends SQLiteOpenHelper {
                     + Constants.REQ_TEMPERATURE + " TEXT,"
                     + Constants.REQ_SOILPH + " TEXT " +  ");" ;
 
+//    custom plants table
     private static final String CREATE_TABLE_CUSTOM_PRESET_PLANTS =
             "CREATE TABLE "+
                     Constants.TABLE_CUSTOM_PRESET_PLANTS + " (" +
@@ -54,6 +56,7 @@ public class MyHelper extends SQLiteOpenHelper {
                     + Constants.REQ_TEMPERATURE + " TEXT,"
                     + Constants.REQ_SOILPH + " TEXT " +  ");" ;
 
+//    harvest records table
     private static final String CREATE_TABLE_HARVEST_RECORD =
             "CREATE TABLE "+
                     Constants.TABLE_HARVEST_RECORD_NAME + " (" +
@@ -80,6 +83,7 @@ public class MyHelper extends SQLiteOpenHelper {
         this.context = context;
     }
 
+//    create each table and put values in using contentValues
     @Override
     public void onCreate(SQLiteDatabase db) {
         try {

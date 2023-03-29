@@ -100,6 +100,7 @@ public class Activity_addPlants extends AppCompatActivity {
         startActivity(intent);
     }
 
+//    For each plant selected, add them to the users database
     public void insertPlants(View v){
         list_selectedPlant=plantInfoAddRecycler.getSelectedList();
         list_removePlant=plantInfoAddRecycler.getRemoveList();
@@ -152,6 +153,7 @@ public class Activity_addPlants extends AppCompatActivity {
         startActivity(intent);
     }
 
+//    go back to main activity
     public void cancel(View v){
         plantInfoAddRecycler.clearList();
         Intent intent=new Intent(this,Activity_main_plantManangement.class);

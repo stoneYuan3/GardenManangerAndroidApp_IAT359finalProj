@@ -135,6 +135,8 @@ public class Activity_main_plantManangement extends AppCompatActivity implements
 
     }
 
+
+//    Adds data to shared preferences (from fragSettings), then shares that data to the other fragments
     public void prefs(View v) {
         SharedPreferences preferences = getSharedPreferences("MyData", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();

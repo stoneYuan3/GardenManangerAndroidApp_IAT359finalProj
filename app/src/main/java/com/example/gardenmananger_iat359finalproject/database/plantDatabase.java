@@ -21,6 +21,7 @@ private final MyHelper helper;
         helper = new MyHelper(context);
     }
 
+//    Main plants database
     public long insertUserPlants (String[] dataArr)
     {
         database = helper.getWritableDatabase();
@@ -36,6 +37,8 @@ private final MyHelper helper;
         long id = database.insert(Constants.TABLE_USERADD_PLANTS_NAME, null, contentValues);
         return id;
     }
+
+//    harvest record database
     public long insertHarvestRecord (ArrayList dataArr)
     {
         database = helper.getWritableDatabase();
@@ -52,6 +55,7 @@ private final MyHelper helper;
         return id;
     }
 
+//    custom plants
     public long insertUserCustomPreset (ArrayList dataArr){
         database = helper.getWritableDatabase();
         ContentValues contentValues = new ContentValues();

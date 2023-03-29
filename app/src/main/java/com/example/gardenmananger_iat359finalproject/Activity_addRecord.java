@@ -83,7 +83,6 @@ public class Activity_addRecord extends AppCompatActivity implements TextWatcher
     }
 
     //when the submit button is clicked, insert data to database
-    //does NOT include photo: a placeholder is stored for the photo column instead
     public void submit(View v) {
         String rec_name= String.valueOf(input_rec_plantName.getText());
         String rec_amount= String.valueOf(input_rec_amount.getText());
@@ -96,15 +95,13 @@ public class Activity_addRecord extends AppCompatActivity implements TextWatcher
             rec_photo = "none";
         }
 //        Toast.makeText(this, rec_photo, Toast.LENGTH_SHORT).show();
-        //check if everything is filled except the photo. the photo is optional.
-        //should set another if statment inside this one to handle photo
+
         if(! (rec_name.equals("") || rec_amount.equals("") || rec_dateStart.equals("") || rec_dateEnd.equals("")) ){
             Toast.makeText(this,rec_name,Toast.LENGTH_LONG).show();
             list_harvestInfo.add(rec_name);
             list_harvestInfo.add(rec_amount);
             list_harvestInfo.add(rec_dateStart);
             list_harvestInfo.add(rec_dateEnd);
-            //placeholder. should ideally be a photo link
             list_harvestInfo.add(rec_photo);
 
             //insert the data to database. see plantDatabase for details
@@ -133,6 +130,7 @@ public class Activity_addRecord extends AppCompatActivity implements TextWatcher
         startActivityForResult(intentCamera, imageId);
     }
 
+//    shows camera photo that was taken inside the activity
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         Bitmap image = (Bitmap) data.getExtras().get("data");

@@ -41,7 +41,7 @@ public class Frag_settings extends Fragment implements RadioGroup.OnCheckedChang
         return view;
     }
 
-
+//check which radio button has been selected, and then change id to a new colour
     @Override
     public void onCheckedChanged(RadioGroup group, int i) {
         switch(i) {
