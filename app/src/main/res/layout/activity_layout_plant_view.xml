@@ -22,159 +22,169 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="5dp"
             android:layout_marginEnd="10dp"
             android:layout_weight="1"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/plantInfo_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Plant Name"
-                android:textColor="#000000"
-                android:textSize="20sp" />
-
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Ideal Conditions" />
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
                 android:layout_weight="1"
                 android:orientation="horizontal">
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_marginRight="10dp"
                     android:layout_weight="1"
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/plantInfo_sunlight"
+                        android:id="@+id/plantInfo_title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_weight="1"
-                        android:drawableStart="@drawable/ic_baseline_light_mode_24"
-                        android:drawablePadding="2dp"
-                        android:text="3-8h" />
+                        android:text="Plant Name"
+                        android:textColor="#000000"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/textView9"
-                        android:layout_width="match_parent"
+                        android:id="@+id/textView2"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
                         android:layout_weight="1"
-                        android:background="#FFFFFF"
-                        android:foregroundGravity="center_vertical|center"
-                        android:gravity="center"
-                        android:padding="3dp"
-                        android:text="Sunlight / Day"
-                        android:textSize="10sp" />
+                        android:text="Ideal Conditions"
+                        android:textSize="16sp" />
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/layout_info"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginRight="10dp"
-                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
                     android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/plantInfo_soilMoist"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_weight="1"
-                        android:drawableStart="@drawable/ic_baseline_water_drop_24"
-                        android:drawablePadding="2dp"
-                        android:gravity="center"
-                        android:text="60%" />
-
-                    <TextView
-                        android:id="@+id/textView10"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_weight="1"
-                        android:background="#FFFFFF"
-                        android:foregroundGravity="center_vertical|center"
-                        android:gravity="center"
-                        android:padding="3dp"
-                        android:text="Soil Humid"
-                        android:textSize="10sp" />
-                </LinearLayout>
+                        android:orientation="horizontal">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginRight="10dp"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
+                        <TextView
+                            android:id="@+id/plantInfo_sunlight"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center|left"
+                            android:layout_marginHorizontal="5dp"
+                            android:drawableStart="@drawable/ic_baseline_light_mode_24"
+                            android:drawablePadding="2dp"
+                            android:gravity="center|start"
+                            android:paddingRight="5dp"
+                            android:text="3-8h" />
 
-                    <TextView
-                        android:id="@+id/plantInfo_temperature"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_weight="1"
-                        android:drawableStart="@drawable/ic_baseline_device_thermostat_24"
-                        android:drawablePadding="2dp"
-                        android:gravity="center"
-                        android:text="15-20C" />
+                        <TextView
+                            android:id="@+id/textView9"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:background="#FFFFFF"
+                            android:foregroundGravity="center_vertical|center"
+                            android:gravity="center|start"
+                            android:padding="3dp"
+                            android:text="Sunlight / Day"
+                            android:textSize="14sp" />
+                    </LinearLayout>
 
-                    <TextView
-                        android:id="@+id/textView11"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
                         android:layout_weight="1"
-                        android:background="#FFFFFF"
-                        android:foregroundGravity="center_vertical|center"
-                        android:gravity="center"
-                        android:padding="3dp"
-                        android:text="Temperature"
-                        android:textSize="10sp" />
-                </LinearLayout>
+                        android:orientation="horizontal">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginRight="10dp"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
+                        <TextView
+                            android:id="@+id/plantInfo_temperature"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center|left"
+                            android:layout_marginHorizontal="5dp"
+                            android:drawableStart="@drawable/ic_baseline_device_thermostat_24"
+                            android:gravity="center|start"
+                            android:paddingRight="5dp"
+                            android:text="15-20C" />
 
-                    <TextView
-                        android:id="@+id/plantInfo_soilPH"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_weight="1"
-                        android:drawableStart="@drawable/ic_baseline_scale_24"
-                        android:drawablePadding="2dp"
-                        android:gravity="center"
-                        android:text="6-7" />
+                        <TextView
+                            android:id="@+id/textView11"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:background="#FFFFFF"
+                            android:foregroundGravity="center_vertical|center"
+                            android:gravity="center|start"
+                            android:padding="3dp"
+                            android:text="Temperature"
+                            android:textSize="14sp" />
+                    </LinearLayout>
 
-                    <TextView
-                        android:id="@+id/textView12"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/plantInfo_soilMoist"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginHorizontal="5dp"
+                            android:drawableStart="@drawable/ic_baseline_water_drop_24"
+                            android:drawablePadding="2dp"
+                            android:gravity="center"
+                            android:paddingRight="5dp"
+                            android:text="60%" />
+
+                        <TextView
+                            android:id="@+id/textView10"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:background="#FFFFFF"
+                            android:foregroundGravity="center_vertical|center"
+                            android:gravity="start"
+                            android:padding="3dp"
+                            android:text="Soil Humid"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="#FFFFFF"
-                        android:foregroundGravity="center_vertical|center"
-                        android:gravity="center"
-                        android:padding="3dp"
-                        android:text="Soil PH Level"
-                        android:textSize="10sp" />
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/plantInfo_soilPH"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center|left"
+                            android:layout_marginHorizontal="5dp"
+                            android:drawableStart="@drawable/ic_baseline_scale_24"
+                            android:drawablePadding="2dp"
+                            android:gravity="center"
+                            android:paddingRight="5dp"
+                            android:text="6-7" />
+
+                        <TextView
+                            android:id="@+id/textView12"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:background="#FFFFFF"
+                            android:foregroundGravity="center_vertical|center"
+                            android:gravity="center|start"
+                            android:padding="3dp"
+                            android:text="Soil PH Level"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+
                 </LinearLayout>
 
             </LinearLayout>

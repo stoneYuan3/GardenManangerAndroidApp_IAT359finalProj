@@ -62,7 +62,7 @@ private final MyHelper helper;
 
         for(int i=0;i<dataArr.size();i++){
             if(dataArr.get(i).equals("")){
-                dataArr.set(i,"not defined");
+                dataArr.set(i,"undefined");
             }
         }
         //0 is name, 1 is sun, 2 is humid, 3 is temperature, 4 is ph
