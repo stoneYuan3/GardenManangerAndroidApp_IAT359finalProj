@@ -55,7 +55,7 @@
                 android:layout_marginLeft="10sp"
                 android:layout_marginRight="10sp"
                 android:layout_weight="2"
-                android:onClick="submit"
+                android:onClick="delete"
                 android:padding="15dp"
                 android:text="Delete Selection"
                 android:textColor="#000000" />
