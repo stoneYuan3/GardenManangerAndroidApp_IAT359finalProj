@@ -13,9 +13,7 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
-import android.media.ToneGenerator;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -34,8 +32,8 @@ public class Activity_lightSensor extends AppCompatActivity implements SensorEve
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_light_sensor);
 
-        text_lightsenData=findViewById(R.id.text_lightsenData);
         text_lightClass=findViewById(R.id.text_lightClass);
+        text_lightsenData=findViewById(R.id.text_lightsenData);
         dataLayout = findViewById(R.id.dataLayout);
 
         SharedPreferences preferences = getSharedPreferences("MyData", Context.MODE_PRIVATE);

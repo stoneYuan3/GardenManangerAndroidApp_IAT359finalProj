@@ -12,9 +12,14 @@
 
         <ImageView
             android:id="@+id/harvestImageView"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:layout_marginRight="10sp"
             android:layout_weight="0"
+            android:adjustViewBounds="true"
+            android:cropToPadding="false"
+            android:padding="5sp"
+            android:scaleType="fitXY"
             app:srcCompat="@drawable/ic_baseline_local_florist_96" />
 
         <LinearLayout
@@ -33,7 +38,7 @@
                     android:id="@+id/recordName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="10sp"
+                    android:layout_marginRight="15sp"
                     android:text="Plant Name"
                     android:textColor="#000000"
                     android:textSize="20sp"

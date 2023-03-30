@@ -43,7 +43,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/text_lightsenData"
+                android:id="@+id/text_lightClass"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -53,7 +53,7 @@
                 android:textSize="34sp" />
 
             <TextView
-                android:id="@+id/text_lightClass"
+                android:id="@+id/text_lightsenData"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"

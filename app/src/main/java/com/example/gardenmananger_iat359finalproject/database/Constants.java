@@ -25,6 +25,6 @@ public class Constants {
     public static final String HARVEST_PHOTO = "photo";
 
 
-    public static final int DATABASE_VERSION = 32;
+    public static final int DATABASE_VERSION = 33;
 
 }

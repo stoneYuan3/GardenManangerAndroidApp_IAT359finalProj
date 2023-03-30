@@ -15,7 +15,7 @@ public class MyHelper extends SQLiteOpenHelper {
 //Define apps preset plants to select from
     private String[][] presetPlants = {
             {"Tomato", String.valueOf(R.drawable.tomato),"6-8 Hours", "60%", "15-30C","6-8 ph"},
-            {"Potato",String.valueOf(R.drawable.potato),"6-8 Hours", "60%", "15-30C","6-8 ph"},
+            {"Potato",String.valueOf(R.drawable.potato),"6-8 Hours", "60%", "5-25C","6-8 ph"},
             {"Lettuce",String.valueOf(R.drawable.lettuce),"4-6 Hours", "70%", "5-20C","6-8 ph"},
             {"Carrot",String.valueOf(R.drawable.carrot),"6-8 Hours", "70%", "5-20C","6-8 ph"},
             {"Kale",String.valueOf(R.drawable.kale),"6-8 Hours", "70%", "5-20C","6-8 ph"},
