@@ -19,6 +19,8 @@ import java.util.ArrayList;
 
 public class PlantsInfoShow_recycler extends RecyclerView.Adapter<PlantsInfoShow_recycler.PlantInfoShowView>{
 
+    //for Activity_main_plantManangmet
+    //generate list of plant info bar that are not selectable
 
     private ArrayList list_plant;
     public PlantsInfoShow_recycler(ArrayList list){

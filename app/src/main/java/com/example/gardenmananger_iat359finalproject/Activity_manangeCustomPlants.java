@@ -60,7 +60,7 @@ public class Activity_manangeCustomPlants extends AppCompatActivity {
             cancel.setBackgroundColor(Color.parseColor(interfaceColour));
         }
     }
-
+    //only displaying plant presets that are added by the user
     private void listReset(){
         ArrayList list_customPlants=database.preparePresetPlantData("userPreset");
         list_selectedPlant=new ArrayList();

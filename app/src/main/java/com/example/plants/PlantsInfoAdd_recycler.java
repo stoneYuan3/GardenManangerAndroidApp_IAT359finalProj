@@ -27,7 +27,9 @@ import java.util.Comparator;
 
 public class PlantsInfoAdd_recycler extends RecyclerView.Adapter<PlantsInfoAdd_recycler.PlantInfoAddView>{
 
-//    private String title;
+    //for Activity_addPlants
+    //generate list of plant info bar that are selectable
+
     private ArrayList list_preset,list_plant,list_customPlant,list_userPlant;
     private Context context;
 
@@ -123,7 +125,7 @@ public class PlantsInfoAdd_recycler extends RecyclerView.Adapter<PlantsInfoAdd_r
         return list_plant.size();
     }
 
-
+    //make those lists available for activities
     public ArrayList getSelectedList(){
         return list_selectedPlant;
     }
@@ -167,6 +169,7 @@ public class PlantsInfoAdd_recycler extends RecyclerView.Adapter<PlantsInfoAdd_r
             switchUI(isSelected);
         }
 
+        //change UI when the item is selected or deselected
         @Override
         public void onClick(View v) {
             if(isSelected){

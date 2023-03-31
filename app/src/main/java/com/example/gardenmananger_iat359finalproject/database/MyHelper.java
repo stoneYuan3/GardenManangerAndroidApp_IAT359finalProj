@@ -66,12 +66,6 @@ public class MyHelper extends SQLiteOpenHelper {
                     Constants.HARVEST_STARTDATE + " TEXT," +
                     Constants.HARVEST_HARVEST_DATE + " TEXT, " + Constants.HARVEST_PHOTO + " TEXT " + ");" ;
 
-//    private static final String INSERT_PRESET_PLANT =
-//            "INSERT INTO" + Constants.TABLE_PRESET_PLANTS_NAME +
-//                    "(" + Constants.ICON + " " + Constants.REQ_SUNLIGHT + " " + Constants.REQ_HUMIDITY
-//                    + " " + Constants.REQ_TEMPERATURE + " " + Constants.REQ_SOILPH +
-//                    " ) " + "VALUES (1, 'John Doe', 'johndoe@example.com');" ;
-
     private static final String DROP_PRESET_TABLE = "DROP TABLE IF EXISTS " +Constants.TABLE_PRESET_PLANTS_NAME;
     private static final String DROP_USER_TABLE = "DROP TABLE IF EXISTS " +Constants.TABLE_USERADD_PLANTS_NAME;
     private static final String DROP_USERPRESET_TABLE = "DROP TABLE IF EXISTS " +Constants.TABLE_CUSTOM_PRESET_PLANTS;

@@ -91,6 +91,7 @@ public class Activity_addPlants extends AppCompatActivity {
         }
     }
 
+    //jumping to other activities: add new preset activity and delete custom preset activity
     public void addNewPresetIntent(View v){
         Intent intent=new Intent(this,Activity_addCustomPlantTemp.class);
         startActivity(intent);

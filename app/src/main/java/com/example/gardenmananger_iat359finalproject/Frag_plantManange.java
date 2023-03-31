@@ -48,10 +48,11 @@ public class Frag_plantManange extends Fragment implements View.OnClickListener 
         headerLayout=view.findViewById(R.id.headerLayout);
 
         context=container.getContext();
-        // Inflate the layout for this fragment
 
         database = new plantDatabase(context);
         helper=new MyHelper(context);
+
+        //pull the list of plants that are used by the user
         ArrayList list_userPlants=database.preparePresetPlantData("user");
 
         masterRecycler=view.findViewById(R.id.list_plantShow);

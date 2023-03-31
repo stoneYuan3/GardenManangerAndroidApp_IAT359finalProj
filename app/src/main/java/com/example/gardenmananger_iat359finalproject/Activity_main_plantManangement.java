@@ -83,34 +83,8 @@ public class Activity_main_plantManangement extends AppCompatActivity implements
 
         database = new plantDatabase(this);
         helper=new MyHelper(this);
-//        ArrayList arr=database.preparePresetPlantData("preset");
-//        //this for loop is for testing purposes only
-//        for(int i=0;i<arr.size();i++){
-//            String[] plantDataEach= (String[]) arr.get(i);
-//            for(int j=0;j<plantDataEach.length;j++){
-//                Log.d("presetPlants",i+" "+plantDataEach[j]);
-//            }
-//        }
     }
 
-    public void addDatabaseEntry (View view)
-    {
-//      NOTE adding an entry to the database. Needs editText of user input
-
-//        String name = name.getText().toString();
-
-//        Toast.makeText(this, name, Toast.LENGTH_SHORT).show();
-//        long id = database.insertData(name);
-//        if (id < 0)
-//        {
-//            Toast.makeText(this, "fail", Toast.LENGTH_SHORT).show();
-//        }
-//        else
-//        {
-//            Toast.makeText(this, "success", Toast.LENGTH_SHORT).show();
-//        }
-
-    }
 
     public void startToolActivity(View v){
         Intent intent=new Intent(this,Activity_lightSensor.class);

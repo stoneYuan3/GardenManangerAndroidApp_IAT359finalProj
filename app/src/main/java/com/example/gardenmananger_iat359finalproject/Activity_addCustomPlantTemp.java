@@ -90,15 +90,4 @@ public class Activity_addCustomPlantTemp extends AppCompatActivity {
         finish();
     }
 
-//    public void insertFromEditText(ArrayList inputList){
-//        for(int i=0;i<inputList.size();i++){
-//            if(inputList.get(i).equals("")){
-//                Toast.makeText(this, "You havent complete the form!", Toast.LENGTH_SHORT).show();
-//                break;
-//            }
-//            else{
-//            }
-//        }
-//    }
-
 }

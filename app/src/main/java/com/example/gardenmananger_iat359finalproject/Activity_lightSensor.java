@@ -69,13 +69,13 @@ public class Activity_lightSensor extends AppCompatActivity implements SensorEve
                 float valEach=lightValAll[i];
                 text_lightsenData.setText(valEach+" luminance");
 
-                if(valEach<5000){
+                if(valEach<1000){
                     text_lightClass.setText("full shade");
                 }
-                else if(valEach>5000 && valEach<20000){
+                else if(valEach>1000 && valEach<9000){
                     text_lightClass.setText("partial shade");
                 }
-                else if(valEach>20000 && valEach<30000){
+                else if(valEach>9000 && valEach<30000){
                     text_lightClass.setText("full sun");
                 }
                 else{
@@ -90,9 +90,5 @@ public class Activity_lightSensor extends AppCompatActivity implements SensorEve
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
 
     }
-
-//    public void back(){
-//        getFragmentManager().popBackStack();
-//    }
 
 }

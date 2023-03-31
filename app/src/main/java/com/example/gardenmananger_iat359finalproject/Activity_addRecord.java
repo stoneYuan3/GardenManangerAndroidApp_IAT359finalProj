@@ -129,7 +129,6 @@ public class Activity_addRecord extends AppCompatActivity implements TextWatcher
         Intent intentCamera = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         startActivityForResult(intentCamera, imageId);
     }
-
 //    shows camera photo that was taken inside the activity
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -161,4 +160,6 @@ public class Activity_addRecord extends AppCompatActivity implements TextWatcher
     public void afterTextChanged(Editable s) {
 
     }
+
+
 }

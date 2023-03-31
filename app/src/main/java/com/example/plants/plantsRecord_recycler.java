@@ -22,6 +22,9 @@ import java.util.ArrayList;
 
 public class plantsRecord_recycler extends RecyclerView.Adapter<plantsRecord_recycler.MyViewHolder>{
 
+    //for frag_records
+    //generate list of harvest records
+
     private ArrayList list_plantRecord;
     public plantsRecord_recycler(ArrayList list){
         this.list_plantRecord=list;
@@ -40,7 +43,6 @@ public class plantsRecord_recycler extends RecyclerView.Adapter<plantsRecord_rec
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-//        String title = holder.titleEditText.getText().toString();
         String[] harvestInfoEach = (String[]) list_plantRecord.get(position);
 
         String harvestTitle=harvestInfoEach[0];
@@ -66,8 +68,6 @@ public class plantsRecord_recycler extends RecyclerView.Adapter<plantsRecord_rec
             holder.recordPhoto.setImageDrawable(icon);
         }
 
-        //again, remember to put photo in
-
     }
 
     @Override
@@ -87,9 +87,6 @@ public class plantsRecord_recycler extends RecyclerView.Adapter<plantsRecord_rec
             recordStartDate=(TextView) itemView.findViewById(R.id.recordStartDate);
             recordHarvestDate=(TextView) itemView.findViewById(R.id.recordHarvestDate);
             recordPhoto=(ImageView) itemView.findViewById(R.id.harvestImageView);
-
-
-            //again, remember to put photo in
 
             titleEditText=(EditText) itemView.findViewById(R.id.input_rec_plantName);
         }
