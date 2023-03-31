@@ -85,6 +85,8 @@ public class Activity_manangeCustomPlants extends AppCompatActivity {
                 if(result){
                     Toast.makeText(this, "delete successful", Toast.LENGTH_SHORT).show();
                     listReset();
+                    Intent intent=new Intent(this,Activity_addPlants.class);
+                    startActivity(intent);
                 }
                 else{
                     Toast.makeText(this, "delete failed", Toast.LENGTH_SHORT).show();
